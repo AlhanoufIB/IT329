@@ -12,28 +12,39 @@
         </header>
 
         <main>
-            <h1>Welcome [name]</h1>
-            <h1><a href="home.html">Log-out</a></h1>
+            <span class="WelcomeUser">Welcome [name]!</span>
+            <a href="home.html" class="LogOutUser">Sign Out</a>
 
             <div class="UserInfo">
                 <div id="UserPersonalInfo">
+                    <img src="images/userIcon.png" alt="User Image" class="UserImg">
                     <h2>My Information</h2>
                     Name
                     <br>
                     Email address
-                    <img src="" alt="User Image" class="UserImg">
+                    
                 </div>
                 <br>
                 <div id="User-MyRecipes">
-                    <h2><a href="MyRecipes.html">My Recipes</a></h2>
+                    <h2><a href="MyRecipes.html" class="RecipeURL">My Recipes</a></h2>
                     <span id="TotalRecipes">Total Recipes:15</span>
                     <br>
                     <span id="TotalLikes">Total Likes:132</span>
                 </div>
             </div>
             <br>
+            
             <div class="'AvailabileRecipes">
-                <h2>All Available Recipes</h2>
+                <h2 style="display: inline;">All Available Recipes</h2>
+
+                <select id="CategoryFilter">
+                    <option value="AllCategories">All Categories</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Beverage">Beverage</option>
+                </select>
+
                 <table class="RecipeTable">
                     <tr>
                         <th>Recipe Name</th>
@@ -43,9 +54,9 @@
                         <th>Category</th>
                     </tr>
                     <tr>
-                        <td>Recipe 1</td>
+                        <td><a href="" class="RecipeURL">Recipe 1</a></td>
                         <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
-                        <td>Creator 1</td>
+                        <td><img src="" alt="Creator Image" class="CreatorImg">Creator 1</td>
                         <td>25</td>
                         <td>Dessert</td>
                     </tr>
@@ -69,14 +80,14 @@
 
                     </tr>
                     <tr>
-                        <td>Recipe A</td>
+                        <td><a href="" class="RecipeURL">Recipe 1</a></td>
                         <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
-                        <td><a>Remove</a></td>
+                        <td><a href="User.html" class="HeartIcon">♥</a></td>
                     </tr>
                     <tr>
                         <td>.....</td>
                         <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
-                        <td>.....</td>
+                        <td><a href="User.html" class="HeartIcon">♥</a></td>
                     </tr>
                 </table>
 
