@@ -1,12 +1,11 @@
 
 /* this is the css file for the user page only */
-
-
 :root{
     --text-color: #724539;
     --soft-mint:#A7D8BD;
     --cream:#F9F7F2;
     --accent-gold: #f6c757;
+    --light-cream:#fdfdfd;
 }
 body {
     font-family: Arial, sans-serif;
@@ -15,16 +14,26 @@ body {
 }
 .UserPage main {
     margin: 90px;
-    background-color: #efebe4;
+    background-color: #f9f6f1;
     color: var(--text-color);
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
 }
 
 .UserPage .WelcomeUser {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    margin-bottom: 20px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    
+}
+.UserPage h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
 .UserPage .LogOutUser {
@@ -37,18 +46,22 @@ body {
     padding: 10px 20px;
     border-radius: 20px;
     transition: .3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .UserPage .LogOutUser:hover {
     background-color: var(--soft-mint);
+    transform: translateY(-4px);
 }
 
 .UserPage #UserPersonalInfo , .UserPage #User-MyRecipes{
-    border: 1px solid var(--text-color);
     border-radius: 10px;
     padding: 15px;
     margin: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--light-cream);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    transition: 0.3s;
 }
 .UserPage #UserPersonalInfo {
     position: relative;
@@ -65,40 +78,89 @@ body {
     font-weight: bolder;
     color: var(--text-color);
     transition: .3s;
+    padding:7px;
+    border-radius: 12px;
 }
 .UserPage .RecipeURL:hover {
-    color:var(--accent-gold)
+    color:var(--cream);
+    background-color: var(--soft-mint) ;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .UserPage #CategoryFilter {
+    border:none;
     margin-bottom: 15px;
     padding: 9px;
-    border-radius: 10px;
     float: right;
     font-size: 16px;
     font-weight: bold;
     color: var(--cream);
     background-color: var(--text-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.UserPage #CategoryFilter:hover {
+    background-color: var(--soft-mint);
+    
 }
 .UserPage .RecipeTable  {
     width: 100%;
-    border-collapse: collapse;
-    border: 1px solid black;
+    font-size: 20px;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+
 }
 
+.UserPage .RecipeTable  tr {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.UserPage .RecipeTable tr :first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.UserPage .RecipeTable tr :last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.UserPage .RecipeTable tr:not(:first-child):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+.UserPage .RecipeTable tr:not(:first-child) {
+    background-color: #fdfdfd;
+    height: 100px;
+}
 
 .UserPage .RecipeTable td{
-    border: 1px solid black;
     padding: 8px;
     text-align: center;
+    height: auto;
+    width: auto;
+
 }
 
 .UserPage .RecipeTable th {
-    border: 1px solid black;
-    padding: 10px;
-    background-color: #f2f2f2;
+    background-color: var(--text-color);
     text-align: center;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: var(--light-cream);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 14px 10px;
+    position: sticky;
+    top: 0;
 }
+
+
 
 .UserPage .HeartIcon {
     font-size: 30px;
