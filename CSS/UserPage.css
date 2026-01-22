@@ -157,7 +157,8 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 14px 10px;
     position: sticky;
-    top: 0;
+    top: 1px;
+    z-index: 9;
 }
 
 
