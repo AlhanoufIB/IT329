@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="../JS/add.js" defer></script>
+        <style>
+            @import url("../CSS/Main.css");
+            @import url("../CSS/AddEdit.css");
+</style>
+        <title>rec</title>
+
+
+    </head>
+
+    <body class="headerandfooter">
+        <header>
+<div class="topnav">
+    <div class="logo"> <img src="../images/logo.png" alt="" class="logoimg"> Ramadan</div>
+    <nav>
+        <ul>
+       <li><a href="index.html">Home</a></li>
+        <li><a href="MyRecipes.html">My Recipes</a></li>
+        <li><a href="AddRecipe.html">Add Recipe</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+    </nav>
+    </div>
+        </header>
+
+        <main>
+
+<div class="add">
+    <h1>Add Recipe</h1>
+<form action="/submit-recipe" method="post" class="AddRecipeForm" onsubmit="redirecttoRecipes(event)">
+    <label for="recipeName">Recipe Name:</label><br>
+    <input type="text" id="recipeName" name="recipeName" required><br><br>
+
+
+    <label for="Category">Category:</label><br>
+    <select id="Category" name="Category" >
+        <option value="recipe1">Select a recipe</option>
+        <option value="recipe2">ftor</option>
+        <option value="recipe3">shoor</option>
+        <option value="recipe4">snack</option>
+    </select><br><br>
+
+    <label for="Description">Description:</label><br>
+    <textarea id="Description" name="Description" rows="4" required></textarea><br><br>
+
+
+    <label for="RecipePhoto">Upload Photo:</label><br>
+    <input type="file" id="RecipePhoto" name="RecipePhoto" required><br><br>
+
+   <label>Ingredients:</label><br>
+   <div id="Ingredients"></div><br><br>
+    <button type="button" class="secondery" onclick="addIngredient()" >Add Ingredient</button><br><br>
+    
+    <label>Instructions:</label>
+    <div id="Instructions">
+        <input type="text" name="Instruction" placeholder="Step 1" required><br><br>
+    </div><br>
+<button type="button" class="secondery" onclick="addInstruction()">Add Instruction</button><br><br>
+
+
+
+<label for="VideoOrURL">Upload Video</label><br>
+<input type="file" id="VideoOrURL" name="VideoOrURL"><br><br>
+<label for="URL">or URL:</label><br>
+<input type="text" id="URL" name="URL" placeholder="https://example.com"><br><br>
+
+
+<button type="submit" class="submit">Submit Recipe</button>
+</form>
+</div>
+        </main>
+
+        <footer>
+<div class="footer-content">
+    <p class="copy">© 2026 Our Name. All rights reserved.</p>
+       </div>     
+      
+     
+        </footer>
+    </body>
+</html>

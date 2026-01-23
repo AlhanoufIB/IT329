@@ -1,0 +1,113 @@
+/* ===== Main Layout ===== */
+main {
+  padding: 60px 20px;
+}
+
+.add {
+  max-width: 700px;
+  margin: auto;
+  background-color: #FFFFFF;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Headings ===== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: #C9A24D;
+  margin-top: 10px;
+}
+
+/* ===== Labels ===== */
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #D1D5DB;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background-color: #FAFAFA;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #C9A24D;
+  background-color: #FFFFFF;
+}
+
+/* ===== Ingredient Rows ===== */
+.ingredient-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ingredient-row input {
+  flex: 1;
+}
+
+/* ===== Buttons ===== */
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.secondery {
+  background-color: transparent;
+  color: #0B1C2D;
+  border: 1px dashed #C9A24D;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.secondery:hover {
+  background-color: #C9A24D;
+  color: #0B1C2D;
+}
+
+.submit {
+  width: 100%;
+  background-color: #0B1C2D;
+  color: #F5EFE6;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submit:hover {
+  background-color: #132F4C;
+}
+

@@ -37,7 +37,7 @@
       
         font-family: 'Libre Baskerville', serif;
         /* Logo styling */
-        font-size: 40px;
+        font-size: 25px;
         font-weight: bold;
     }
     .topnav {
@@ -72,12 +72,7 @@
         flex: 1;
         padding: 40px 60px;
     }
-    h1{
-       font-family: 'Libre Baskerville', serif;
-        font-size: 32px;
-        margin-bottom: 16px;
-        color:   #1F1F1F;
-    }
+ 
     footer{
         display: static;
         background-color: #0B1C2D;
@@ -89,3 +84,29 @@
     .copy{
         margin: 0;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
