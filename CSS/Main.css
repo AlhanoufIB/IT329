@@ -1,1 +1,91 @@
 /* this is the main css file used across all pages ( for the header and footer and make sure the general look is the same) */
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+ }
+ body{
+    background-color: #F7F4EF;
+    min-height: 980px;
+    min-width: 980px;
+    display: flex;
+    flex-direction: column;
+ }
+    header{
+        background-color: #0B1C2D;
+        background-image: url("../images/food.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        padding:15px 60px
+    }
+    .logoimg{
+        /* Logo image styling --change it later--*/
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: 100px;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+        text-shadow: #1F1F1F 2px 2px 4px;
+      
+        font-family: 'Libre Baskerville', serif;
+        /* Logo styling */
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .topnav {
+        color:#F5EFE6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+        display: flex;
+    align-items: center;
+    }
+    nav ul{
+        list-style-type: none;
+        display: flex;
+    gap: 20px;
+    }
+    nav a{
+        font-family: 'Inter', sans-serif;
+
+        color: #F5EFE6;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 18px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    nav a:hover{
+        transform: scale(1.08);
+      transform: translateY(-2px);
+      opacity: 0.8;
+    }
+    main{
+        flex: 1;
+        padding: 40px 60px;
+    }
+    h1{
+       font-family: 'Libre Baskerville', serif;
+        font-size: 32px;
+        margin-bottom: 16px;
+        color:   #1F1F1F;
+    }
+    footer{
+        display: static;
+        background-color: #0B1C2D;
+        color: #F5EFE6;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto;
+    }
+    .copy{
+        margin: 0;
+    }
