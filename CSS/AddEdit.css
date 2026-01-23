@@ -111,3 +111,16 @@ button {
   background-color: #132F4C;
 }
 
+.RecipePhoto {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #D1D5DB;
+}
+.current-video {
+ width: 260px;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #D1D5DB;
+}
