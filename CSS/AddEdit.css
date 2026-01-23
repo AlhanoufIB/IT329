@@ -4,10 +4,10 @@ main {
 }
 
 .add {
-  max-width: 700px;
+  max-width:  1000px;
   margin: auto;
   background-color: #FFFFFF;
-  padding: 40px;
+  padding: 32px 56px;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
@@ -16,7 +16,7 @@ main {
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -26,15 +26,15 @@ h1::after {
   width: 70px;
   height: 3px;
   background-color: #C9A24D;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 /* ===== Labels ===== */
 label {
   display: block;
   font-weight: 500;
-  margin-bottom: 6px;
-  margin-top: 20px;
+  margin-bottom: 4px;
+  margin-top: 14px;
 }
 
 /* ===== Inputs ===== */
@@ -43,7 +43,7 @@ input[type="file"],
 select,
 textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-radius: 10px;
   border: 1px solid #D1D5DB;
   font-family: 'Inter', sans-serif;
