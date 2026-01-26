@@ -13,7 +13,8 @@
     flex-direction: column;
  }
     header{
-        background-color: #0B1C2D;
+        background-color: #681f42;
+;
         background-image: url("../images/food.jpg");
         background-size: cover;
         background-repeat: no-repeat;
@@ -75,7 +76,7 @@
  
     footer{
         display: static;
-        background-color: #0B1C2D;
+        background-color: #681f42;
         color: #F5EFE6;
         text-align: center;
         padding: 10px 0;

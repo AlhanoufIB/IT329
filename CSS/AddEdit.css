@@ -1,23 +1,41 @@
-/* ===== Main Layout ===== */
-main {
-  padding: 60px 20px;
+
+:root{
+  --text-color: #681F42;
+  --soft-mint: #C67154;
+  --cream: #ECCBB5;
+  --light-cream: #fdfdfd;
 }
 
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F9F7EB;
+  color: var(--text-color);
+  background-image: url('../images/bg.png');
+}
+
+/* ===== Main Layout ===== */
+main {
+  padding: 90px;
+}
+
+/* ===== Main Container ===== */
 .add {
-  max-width:  1000px;
+  max-width: 1000px;
   margin: auto;
-  background-color: #FFFFFF;
+  background-color: #f9f6f1;
   padding: 32px 56px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 /* ===== Headings ===== */
 h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
   margin-bottom: 20px;
-  position: relative;
+  color: var(--text-color);
 }
 
 h1::after {
@@ -25,16 +43,18 @@ h1::after {
   display: block;
   width: 70px;
   height: 3px;
-  background-color: #C9A24D;
-  margin-top: 6px;
+  background-color: var(--soft-mint);
+  margin-top: 8px;
+  border-radius: 10px;
 }
 
 /* ===== Labels ===== */
 label {
   display: block;
-  font-weight: 500;
-  margin-bottom: 4px;
+  font-weight: bold;
+  margin-bottom: 6px;
   margin-top: 14px;
+  color: var(--text-color);
 }
 
 /* ===== Inputs ===== */
@@ -44,11 +64,12 @@ select,
 textarea {
   width: 100%;
   padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #D1D5DB;
-  font-family: 'Inter', sans-serif;
+  border-radius: 12px;
+  border: none;
   font-size: 14px;
-  background-color: #FAFAFA;
+  background-color: var(--light-cream);
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 textarea {
@@ -60,15 +81,14 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #C9A24D;
-  background-color: #FFFFFF;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
 /* ===== Ingredient Rows ===== */
 .ingredient-row {
   display: flex;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .ingredient-row input {
@@ -77,50 +97,59 @@ select:focus {
 
 /* ===== Buttons ===== */
 button {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+/* secondary button */
 .secondery {
   background-color: transparent;
-  color: #0B1C2D;
-  border: 1px dashed #C9A24D;
+  color: var(--text-color);
+  border: 2px dashed var(--soft-mint);
   padding: 8px 14px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: 8px;
 }
 
 .secondery:hover {
-  background-color: #C9A24D;
-  color: #0B1C2D;
+  background-color: var(--soft-mint);
+  color: var(--light-cream);
+  transform: translateY(-2px);
 }
 
+/* submit button */
 .submit {
   width: 100%;
-  background-color: #0B1C2D;
-  color: #F5EFE6;
+  background-color: var(--text-color);
+  color: var(--light-cream);
   border: none;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 20px;
   font-size: 16px;
   margin-top: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .submit:hover {
-  background-color: #132F4C;
+  background-color: var(--soft-mint);
+  transform: translateY(-4px);
 }
 
+/* ===== Media ===== */
 .RecipePhoto {
   width: 180px;
   height: auto;
   border-radius: 12px;
   margin-top: 10px;
-  border: 1px solid #D1D5DB;
+  background-color: var(--light-cream);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
+
 .current-video {
- width: 260px;
+  width: 260px;
   border-radius: 12px;
   margin-top: 10px;
-  border: 1px solid #D1D5DB;
+  background-color: var(--light-cream);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
