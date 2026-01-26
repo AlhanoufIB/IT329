@@ -8,40 +8,40 @@
         <link rel="stylesheet" href="../CSS/UserPage.css">
     </head>
     <body class="UserPage">
-         <header>
-<div class="topnav">
-    <div class="logo"> <img src="../images/logo.png" alt="Logo" class="logoimg"> Recipes</div>
-    <nav>
-        <ul>
-       <li><a href="index.html">Home</a></li>
-        <li><a href="MyRecipes.html">My Recipes</a></li>
-        <li><a href="AddRecipe.html">Add Recipe</a></li>
-        <li><a href="AboutUs.html">About Us</a></li>
-        </ul>
-    </nav>
-    </div>
+        <header>
+            <div class="topnav">
+                <div class="logo"> <img src="../images/logo.png" alt="Logo" class="logoimg"> Recipes</div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="MyRecipes.html">My Recipes</a></li>
+                            <li><a href="AddRecipe.html">Add Recipe</a></li>
+                            <li><a href="AboutUs.html">About Us</a></li>
+                        </ul>
+                    </nav>
+            </div>
         </header>
 
         <main>
-            <span class="WelcomeUser">Welcome [name]!</span>
-            <a href="home.html" class="LogOutUser">Sign Out</a>
+            <span class="WelcomeUser">Welcome Noura!</span>
+            
 
             <div class="UserInfo">
                 <div id="UserPersonalInfo">
-                    <img src="../images/userIcon.png" alt="User Image" class="UserImg">
-                    <h2>My Information</h2>
-                    Name
-                    <br>
-                    Email address
-                    
+                    <img src="../images/noura.jpg" alt="User Image" class="UserImg">
+                    <h2>Your Information</h2>
+                    <div class="Info">
+                        <h3>Noura Saud</h3>
+                        <h3>Noura.Saud@gmail.com</h3>
+                        
+                    </div>
                 </div>
-                <br>
                 <div id="User-MyRecipes">
-                    <h2><a href="MyRecipes.html" class="RecipeURL">My Recipes</a></h2>
-                    <span id="TotalRecipes">Total Recipes:15</span>
-                    <br>
-                    <span id="TotalLikes">Total Likes:132</span>
+                    <h2><a href="MyRecipes.html" class="RecipeURL">Your Recipes</a></h2>
+                    <h3 id="TotalRecipes">Total Recipes: 18</h3>
+                    <h3 id="TotalLikes">Total Likes: 420</h3>
                 </div>
+                
             </div>
             <br>
             
@@ -50,9 +50,9 @@
 
                 <select id="CategoryFilter">
                     <option value="AllCategories">All Categories</option>
-                    <option value="Dessert">Dessert</option>
-                    <option value="Main Course">Main Course</option>
-                    <option value="Appetizer">Appetizer</option>
+                    <option value="Iftar">Iftar</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Suhoor">Suhoor</option>
                     <option value="Beverage">Beverage</option>
                 </select>
 
@@ -65,18 +65,18 @@
                         <th>Category</th>
                     </tr>
                     <tr>
-                        <td><a href="" class="RecipeURL">Recipe 1</a></td>
-                        <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
-                        <td><img src="" alt="Creator Image" class="CreatorImg">Creator 1</td>
-                        <td>25</td>
-                        <td>Dessert</td>
+                        <td><a href="" class="RecipeURL">Date Energy Balls</a></td>
+                        <td><img src="../images/Date-balls.jpg" alt="Recipe Photo" class="RecipeImg"></td>
+                        <td><img src="../images/ChefAhmed.jpg" alt="Creator Image" class="CreatorImg"><br>Chef Ahmed</td>
+                        <td>125</td>
+                        <td>Snacks</td>
                     </tr>
                     <tr>
-                        <td>.....</td>
-                        <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
-                        <td>.....</td>
-                        <td>...</td>
-                        <td>...</td>
+                        <td><a href="" class="RecipeURL">Oat Soup</a></td>
+                        <td><img src="../images/Oat-soup.jpg" alt="Recipe Photo" class="RecipeImg"></td>
+                        <td><img src="../images/ChefAhmed.jpg" alt="Creator Image" class="CreatorImg"><br>Chef Ahmed</td>
+                        <td>230</td>
+                        <td>Iftar</td>
                     </tr>
                 </table>
             </div>
@@ -91,17 +91,18 @@
 
                     </tr>
                     <tr>
-                        <td><a href="" class="RecipeURL">Recipe 1</a></td>
-                        <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
+                        <td><a href="" class="RecipeURL">Date Energy Balls</a></td>
+                        <td><img src="../images/Date-balls.jpg" alt="Recipe Photo" class="RecipeImg"></td>
                         <td><a href="User.html" class="HeartIcon">♥</a></td>
                     </tr>
                     <tr>
-                        <td>.....</td>
-                        <td><img src="" alt="Recipe Photo" class="RecipeImg"></td>
+                        <td><a href="" class="RecipeURL">Luqaimat</a></td>
+                        <td><img src="../images/luqaimat.jpg" alt="Recipe Photo" class="RecipeImg"></td>
                         <td><a href="User.html" class="HeartIcon">♥</a></td>
                     </tr>
                 </table>
             </div>
+            <a href="home.html" class="LogOutUser">Sign Out</a>
 
         </main>
 

@@ -1,16 +1,16 @@
 
 /* this is the css file for the user page only */
 :root{
-    --text-color: #724539;
-    --soft-mint:#A7D8BD;
-    --cream:#F9F7F2;
-    --accent-gold: #f6c757;
+    --text-color: #681F42;
+    --soft-mint:#C67154;
+    --cream:#ECCBB5;
     --light-cream:#fdfdfd;
 }
 body {
     font-family: Arial, sans-serif;
     background-color: #F9F7EB;
     color: var(--text-color);
+    background-image: url('../images/bg.png');
 }
 .UserPage main {
     margin: 90px;
@@ -36,12 +36,30 @@ body {
     text-transform: capitalize;
 }
 
+.UserInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.UserInfo div{
+    width: 48%;
+}
+.UserPage .UserImg {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    background-color: var(--soft-mint);
+}
+
 .UserPage .LogOutUser {
     float: right;
     font-size: 16px;
     text-decoration: none;
     font-weight: bold;
-    color: var(--cream);
+    color: var(--light-cream);
     background-color: var(--text-color);
     padding: 10px 20px;
     border-radius: 20px;
@@ -62,28 +80,37 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     border-radius: 12px;
     transition: 0.3s;
+    position: relative;
+    padding: 25px 30px;
+    min-height: 160px;
 }
+
 .UserPage #UserPersonalInfo {
     position: relative;
+    padding: 25px 140px 25px 25px;
+    min-height: 150px;
+    border-radius: 12px;
+    background-color: var(--light-cream);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
 }
 
-.UserPage .UserImg {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-}
 
 .UserPage .RecipeURL{
+    font-size: 25px;
     text-decoration: none;
     font-weight: bolder;
     color: var(--text-color);
     transition: .3s;
-    padding:7px;
-    border-radius: 12px;
+    border-radius: 30px;
 }
+
 .UserPage .RecipeURL:hover {
-    color:var(--cream);
-    background-color: var(--soft-mint) ;
+    color:var(--soft-mint);
+    text-decoration: underline;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
@@ -94,7 +121,7 @@ body {
     float: right;
     font-size: 16px;
     font-weight: bold;
-    color: var(--cream);
+    color: var(--light-cream);
     background-color: var(--text-color);
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     border-radius: 12px;
@@ -143,6 +170,9 @@ body {
     text-align: center;
     height: auto;
     width: auto;
+    font-size: 20px;
+    font-weight: bold;
+
 
 }
 
@@ -161,8 +191,6 @@ body {
     z-index: 9;
 }
 
-
-
 .UserPage .HeartIcon {
     font-size: 30px;
     color: #f29898;
@@ -174,3 +202,23 @@ body {
 .UserPage .HeartIcon:hover {
     color: #f17070;
 }
+
+
+
+.RecipeImg{
+    width: 200px;
+    height:auto;
+    border-radius: 10px;
+}
+
+.UserPage .CreatorImg{
+    width: 150px;
+    height: auto;
+    border-radius: 50% !important;
+    margin: 8px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+
+
