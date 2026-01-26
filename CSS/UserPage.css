@@ -5,12 +5,15 @@
     --soft-mint:#C67154;
     --cream:#ECCBB5;
     --light-cream:#fdfdfd;
+    --argan:#0B4942;
+    --ROSE-VALLEY:#913C5E;
 }
 body {
     font-family: Arial, sans-serif;
     background-color: #F9F7EB;
     color: var(--text-color);
     background-image: url('../images/bg.png');
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 .UserPage main {
     margin: 90px;
@@ -36,6 +39,14 @@ body {
     text-transform: capitalize;
 }
 
+.UserPage h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    color:var(--ROSE-VALLEY);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
 .UserInfo{
     display: flex;
     flex-direction: row;
@@ -44,6 +55,7 @@ body {
 .UserInfo div{
     width: 48%;
 }
+
 .UserPage .UserImg {
     position: absolute;
     top: 20px;
