@@ -1,25 +1,262 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Recipes - Ramadan Recipes</title>
 
 
-    </head>
-    <body class="MyRecipes">
-        <header>
+  <link rel="stylesheet" href="../CSS/Main.css" />
+  
+  <link rel="stylesheet" href="../CSS/MyRecipes.css" />
+</head>
 
-        </header>
+<body>
+  <div class="container">
+    <header>
+      <div class="topnav">
+        <div class="logo">
+          <img src="../images/logo.png" alt="Logo" class="logoimg" />
+          Ramadan
+        </div>
 
-        <main>
+        <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="MyRecipes.html">My Recipes</a></li>
+            <li><a href="AddRecipe.html">Add Recipe</a></li>
+            <li><a href="User.html">User</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
+    <main>
+      <div class="page-header">
+        <h2>My Recipes</h2>
+        <!-- اسم الصفحة عندك AddRecipe.html -->
+        <a href="AddRecipe.html" class="btn btn-primary">+ Add New Recipe</a>
+      </div>
 
-        </main>
+      <div class="recipes-table-container">
+        <table class="recipes-table">
+          <thead>
+            <tr>
+              <th>Recipe</th>
+              <th>Ingredients</th>
+              <th>Instructions</th>
+              <th>Video</th>
+              <th>Likes</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
 
-        <footer>
+          <tbody>
+            <tr>
+              <td>
+                <div class="recipe-info">
+                  <img src="../images/1.jpg" alt="Samosa" class="recipe-thumb" />
+                  <a href="#" class="recipe-name">Meat Samosa</a>
+                </div>
+              </td>
+              <td>
+                <ul class="ingredients-list">
+                  <li>Samosa dough - 500g</li>
+                  <li>Ground meat - 300g</li>
+                  <li>Onions - 2 pieces</li>
+                  <li>Mixed spices - 1 tsp</li>
+                  <li>Salt and pepper - to taste</li>
+                </ul>
+              </td>
+              <td>
+                <ol class="instructions-list">
+                  <li>Sauté meat with onions and spices</li>
+                  <li>Fill dough with mixture</li>
+                  <li>Fold samosa into triangle shape</li>
+                  <li>Fry samosas until golden brown</li>
+                </ol>
+              </td>
+              <td>
+                <a href="https://www.youtube.com/watch?v=8Qc0ja_I4c0" target="_blank" class="video-link" rel="noopener">
+                  🎥 Watch Video
+                </a>
+              </td>
+              <td class="likes-count">245 ❤️</td>
+              <td>
+                <!-- اسم الملف عندك EditRecipe.html -->
+                <a href="EditRecipe.html" class="btn btn-edit">Edit</a>
+              </td>
+              <td>
+                <!-- delete واجهة فقط -->
+                <a href="#" class="btn btn-delete">Delete</a>
+              </td>
+            </tr>
 
-            
-        </footer>
-    </body>
+            <tr>
+              <td>
+                <div class="recipe-info">
+                  <img src="../images/2.jpg" alt="Kunafa" class="recipe-thumb" />
+                  <a href="#" class="recipe-name">Kunafa with Cream</a>
+                </div>
+              </td>
+              <td>
+                <ul class="ingredients-list">
+                  <li>Kunafa dough - 500g</li>
+                  <li>Cream - 400g</li>
+                  <li>Ghee - 200g</li>
+                  <li>Sugar - 2 cups</li>
+                  <li>Rose water - 1 tbsp</li>
+                </ul>
+              </td>
+              <td>
+                <ol class="instructions-list">
+                  <li>Mix kunafa with melted ghee</li>
+                  <li>Place half of kunafa in pan</li>
+                  <li>Add cream in the middle</li>
+                  <li>Cover with remaining kunafa</li>
+                  <li>Bake in oven until golden</li>
+                  <li>Pour hot syrup over it</li>
+                </ol>
+              </td>
+              <td>
+                <a href="https://www.youtube.com/watch?v=8Nsq6tNFMJI" target="_blank" class="video-link" rel="noopener">
+                  🎥 Watch Video
+                </a>
+              </td>
+              <td class="likes-count">389 ❤️</td>
+              <td><a href="EditRecipe.html" class="btn btn-edit">Edit</a></td>
+              <td><a href="#" class="btn btn-delete">Delete</a></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="recipe-info">
+                  <img src="../images/3.jpg" alt="Soup" class="recipe-thumb" />
+                  <a href="#" class="recipe-name">Lentil Soup</a>
+                </div>
+              </td>
+              <td>
+                <ul class="ingredients-list">
+                  <li>Yellow lentils - 2 cups</li>
+                  <li>Carrots - 2 pieces</li>
+                  <li>Onion - 1 piece</li>
+                  <li>Garlic - 3 cloves</li>
+                  <li>Cumin - 1 tsp</li>
+                  <li>Chicken broth - 6 cups</li>
+                </ul>
+              </td>
+              <td>
+                <ol class="instructions-list">
+                  <li>Sauté onion and garlic</li>
+                  <li>Add lentils and carrots</li>
+                  <li>Add broth and spices</li>
+                  <li>Cook for 30 minutes</li>
+                  <li>Blend soup until smooth</li>
+                </ol>
+              </td>
+              <td>
+                <a href="https://www.youtube.com/watch?v=0Y35SLLH9yU" target="_blank" class="video-link" rel="noopener">
+                  🎥 Watch Video
+                </a>
+              </td>
+              <td class="likes-count">156 ❤️</td>
+              <td><a href="EditRecipe.html" class="btn btn-edit">Edit</a></td>
+              <td><a href="#" class="btn btn-delete">Delete</a></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="recipe-info">
+                  <img src="../images/4.jpg" alt="Qatayef" class="recipe-thumb" />
+                  <a href="#" class="recipe-name">Qatayef with Walnuts</a>
+                </div>
+              </td>
+              <td>
+                <ul class="ingredients-list">
+                  <li>Qatayef dough - 20 pieces</li>
+                  <li>Ground walnuts - 2 cups</li>
+                  <li>Sugar - 1/2 cup</li>
+                  <li>Cinnamon - 1 tsp</li>
+                  <li>Ghee for frying - as needed</li>
+                </ul>
+              </td>
+              <td>
+                <ol class="instructions-list">
+                  <li>Mix walnuts with sugar and cinnamon</li>
+                  <li>Fill qatayef with mixture</li>
+                  <li>Seal qatayef tightly</li>
+                  <li>Fry qatayef until golden</li>
+                  <li>Dip qatayef in cold syrup</li>
+                </ol>
+              </td>
+              <td>
+                <a href="https://www.youtube.com/watch?v=8q-440wyM8U" target="_blank" class="video-link" rel="noopener">
+                  🎥 Watch Video
+                </a>
+              </td>
+              <td class="likes-count">421 ❤️</td>
+              <td><a href="EditRecipe.html" class="btn btn-edit">Edit</a></td>
+              <td><a href="#" class="btn btn-delete">Delete</a></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="recipe-info">
+                  <img src="../images/5.jpg" alt="Dates" class="recipe-thumb" />
+                  <a href="#" class="recipe-name">Date Balls with Nuts</a>
+                </div>
+              </td>
+              <td>
+                <ul class="ingredients-list">
+                  <li>Pitted dates - 500g</li>
+                  <li>Ground almonds - 1 cup</li>
+                  <li>Coconut - 1/2 cup</li>
+                  <li>Butter - 2 tbsp</li>
+                  <li>Cinnamon - 1 tsp</li>
+                </ul>
+              </td>
+              <td>
+                <ol class="instructions-list">
+                  <li>Blend dates with butter</li>
+                  <li>Add almonds and cinnamon</li>
+                  <li>Shape mixture into balls</li>
+                  <li>Coat balls with coconut</li>
+                  <li>Refrigerate before serving</li>
+                </ol>
+              </td>
+              <td>
+                <a href="https://www.youtube.com/watch?v=Fn0fr5wDAXc" target="_blank" class="video-link" rel="noopener">
+                  🎥 Watch Video
+                </a>
+              </td>
+              <td class="likes-count">198 ❤️</td>
+              <td><a href="EditRecipe.html" class="btn btn-edit">Edit</a></td>
+              <td><a href="#" class="btn btn-delete">Delete</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="stats-summary">
+        <div class="stat-card">
+          <h3>Total Recipes</h3>
+          <p class="stat-number">5</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Likes</h3>
+          <p class="stat-number">1,409</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p class="copy">© 2026 Our Name. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../JS/MyRecipes.js"></script>
+</body>
 </html>
