@@ -7,6 +7,7 @@
     --light-cream:#fdfdfd;
     --argan:#0B4942;
     --ROSE-VALLEY:#913C5E;
+    --MARRAKECH:#618C72;
 }
 body {
     font-family: Arial, sans-serif;
@@ -46,6 +47,9 @@ body {
     text-align: center;
     color:var(--ROSE-VALLEY);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+.UserInfo #UserPersonalInfo h2{
+    font-size: 25px;
 }
 .UserInfo{
     display: flex;
@@ -204,18 +208,16 @@ body {
 }
 
 .UserPage .HeartIcon {
-    font-size: 30px;
-    color: #f29898;
+    font-size: 50px;
+    color: var(--ROSE-VALLEY);
     margin-left: 5px;
     width: 20px;
     text-decoration: none;
     transition: .3s;
 }
 .UserPage .HeartIcon:hover {
-    color: #f17070;
+    color: var(--soft-mint);
 }
-
-
 
 .RecipeImg{
     width: 200px;

@@ -1,0 +1,137 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F9F7EB;
+  color: var(--text-color);
+  background-image: url('../images/bg.png');
+}
+/* Card */
+.card{
+  max-width:900px;
+  margin:30px auto;
+  background:#FFFFFF;
+  padding:26px 30px;
+  border-radius:12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+h1{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+p{
+  color:#555;
+  margin-bottom:12px;
+  line-height:1.6;
+}
+
+/* Form */
+label{
+  display:block;
+  font-weight:700;
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+input, select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #D1D5DB;
+  border-radius:10px;
+  background:#FAFAFA;
+}
+
+input:focus, select:focus{
+  outline:none;
+  border-color:#C9A24D;
+  background:#FFFFFF;
+}
+
+
+.btn{
+  display:inline-block;
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  text-align:center;
+}
+
+.btn-primary{
+  background: #681F42;        /* maroon */
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary:hover{
+  background: #913C5E;
+  
+}
+
+
+.btn-secondary{
+  background: #E5CBB5;        /* light beige */
+  color: #0B1C2D;
+  border: 1px solid #D1B59E;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-secondary:hover{
+  background: #D9BBA4;
+}
+
+/* Full width button for Create Account (not huge, but real) */
+.btn-block{
+  width: 100%;
+  display: block;
+}
+
+
+/* Two buttons row */
+.btn-row{
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-row button,
+.btn-row a{
+  flex: 1;
+}
+
+
+/* Links under forms */
+.form-links{
+  margin-top:12px;
+  font-size:14px;
+}
+
+footer{
+  background: #681F42;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 12px 0;
+  margin-top: auto;
+}
+
+footer p{
+  color: #FFFFFF;
+  opacity: 1;
+}
+

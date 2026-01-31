@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign-up</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+  <style>
+    @import url("../CSS/Main.css");
+    @import url("../CSS/style.css");
+  </style>
+
+  <script src="../JS/auth.js" defer></script>
+</head>
+
+<body class="headerandfooter">
+<header>
+  <div class="topnav">
+    <div class="logo"><img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="MyRecipes.html">My Recipes</a></li>
+        <li><a href="AddRecipe.html">Add Recipe</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h1>Sign-up</h1>
+    <p>All fields are required except profile image.</p>
+
+    <form id="signupForm">
+      <label for="fn">First name</label>
+      <input type="text" id="fn" name="firstName" required>
+
+      <label for="ln">Last name</label>
+      <input type="text" id="ln" name="lastName" required>
+
+      <label for="img">Profile image (optional)</label>
+      <input type="file" id="img" name="profileImage" accept="image/*">
+
+      <label for="em">Email address</label>
+      <input type="email" id="em" name="email" required>
+
+      <label for="pw">Password</label>
+      <input type="password" id="pw" name="password" required>
+
+      <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+
+      <div class="form-links">
+        Already have an account? <a href="login.html">Log-in</a><br>
+       
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p class="copy">© 2026 Our Name. All rights reserved.</p>
+       </div>     
+      
+     
+        </footer>
+</body>
+</html>
