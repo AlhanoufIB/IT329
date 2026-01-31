@@ -9,7 +9,7 @@ body {
 .card{
   max-width:900px;
   margin:30px auto;
-  background:#FFFFFF;
+ background-color: #f9f6f1;
   padding:26px 30px;
   border-radius:12px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
