@@ -1,77 +1,10 @@
-/* Simple global CSS (one file) */
 
-*{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-
-body{
-  background:#F7F4EF;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F9F7EB;
+  color: var(--text-color);
+  background-image: url('../images/bg.png');
 }
-
-/* Header */
-header{
-  background:#0B1C2D;
-  color:#F5EFE6;
-  padding:14px 40px;
-}
-
-.topnav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-  font-size:20px;
-}
-
-.logoimg{
-  width:40px;
-  height:40px;
-  object-fit:contain;
-}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:18px;
-}
-
-nav a{
-  color:#F5EFE6;
-  text-decoration:none;
-  font-weight:600;
-}
-
-nav a:hover{ opacity:0.8; }
-
-/* Breadcrumbs */
-.breadcrumbs{
-  padding:10px 40px 0;
-  font-size:14px;
-  color:#0B1C2D;
-}
-
-.breadcrumbs a{
-  color:#0B1C2D;
-  text-decoration:none;
-  font-weight:700;
-}
-
-.breadcrumbs span{ margin:0 8px; opacity:0.6; }
-
-/* Main */
-main{
-  flex:1;
-  padding:30px 40px;
-}
-
 /* Card */
 .card{
   max-width:900px;
@@ -130,38 +63,58 @@ input:focus, select:focus{
 }
 
 .btn-primary{
-  background:#0B1C2D;
-  color:#F5EFE6;
+  background: #681F42;        /* maroon */
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
 }
 
 .btn-primary:hover{
-  background:#132F4C;
+  background: #913C5E;
+  
 }
 
+
 .btn-secondary{
-  background:#E5CBB5;
-  color:#0B1C2D;
-  border:1px solid #D1B59E;
+  background: #E5CBB5;        /* light beige */
+  color: #0B1C2D;
+  border: 1px solid #D1B59E;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
 }
 
 .btn-secondary:hover{
-  background:#D9BBA4;
+  background: #D9BBA4;
 }
 
 /* Full width button for Create Account (not huge, but real) */
 .btn-block{
-  width:100%;
-  margin-top:18px;
+  width: 100%;
+  display: block;
 }
+
 
 /* Two buttons row */
 .btn-row{
-  display:flex;
-  gap:10px;
-  margin-top:16px;
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
 }
 
-.btn-row .btn{ width:100%; }
+.btn-row button,
+.btn-row a{
+  flex: 1;
+}
+
 
 /* Links under forms */
 .form-links{
@@ -169,10 +122,16 @@ input:focus, select:focus{
   font-size:14px;
 }
 
-/* Footer */
 footer{
-  background:#0B1C2D;
-  color:#F5EFE6;
-  text-align:center;
-  padding:10px 0;
+  background: #681F42;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 12px 0;
+  margin-top: auto;
 }
+
+footer p{
+  color: #FFFFFF;
+  opacity: 1;
+}
+
