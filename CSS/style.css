@@ -1,0 +1,178 @@
+/* Simple global CSS (one file) */
+
+*{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+
+body{
+  background:#F7F4EF;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Header */
+header{
+  background:#0B1C2D;
+  color:#F5EFE6;
+  padding:14px 40px;
+}
+
+.topnav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+  font-size:20px;
+}
+
+.logoimg{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:18px;
+}
+
+nav a{
+  color:#F5EFE6;
+  text-decoration:none;
+  font-weight:600;
+}
+
+nav a:hover{ opacity:0.8; }
+
+/* Breadcrumbs */
+.breadcrumbs{
+  padding:10px 40px 0;
+  font-size:14px;
+  color:#0B1C2D;
+}
+
+.breadcrumbs a{
+  color:#0B1C2D;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.breadcrumbs span{ margin:0 8px; opacity:0.6; }
+
+/* Main */
+main{
+  flex:1;
+  padding:30px 40px;
+}
+
+/* Card */
+.card{
+  max-width:900px;
+  margin:30px auto;
+  background:#FFFFFF;
+  padding:26px 30px;
+  border-radius:12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+h1{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+p{
+  color:#555;
+  margin-bottom:12px;
+  line-height:1.6;
+}
+
+/* Form */
+label{
+  display:block;
+  font-weight:700;
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+input, select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #D1D5DB;
+  border-radius:10px;
+  background:#FAFAFA;
+}
+
+input:focus, select:focus{
+  outline:none;
+  border-color:#C9A24D;
+  background:#FFFFFF;
+}
+
+
+.btn{
+  display:inline-block;
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:none;
+  text-align:center;
+}
+
+.btn-primary{
+  background:#0B1C2D;
+  color:#F5EFE6;
+}
+
+.btn-primary:hover{
+  background:#132F4C;
+}
+
+.btn-secondary{
+  background:#E5CBB5;
+  color:#0B1C2D;
+  border:1px solid #D1B59E;
+}
+
+.btn-secondary:hover{
+  background:#D9BBA4;
+}
+
+/* Full width button for Create Account (not huge, but real) */
+.btn-block{
+  width:100%;
+  margin-top:18px;
+}
+
+/* Two buttons row */
+.btn-row{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+}
+
+.btn-row .btn{ width:100%; }
+
+/* Links under forms */
+.form-links{
+  margin-top:12px;
+  font-size:14px;
+}
+
+/* Footer */
+footer{
+  background:#0B1C2D;
+  color:#F5EFE6;
+  text-align:center;
+  padding:10px 0;
+}
