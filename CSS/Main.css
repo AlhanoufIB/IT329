@@ -11,6 +11,8 @@
     min-width: 980px;
     display: flex;
     flex-direction: column;
+    background-image: url('../images/bg.png');
+     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
  }
     header{
         background-color: #681f42;
@@ -22,7 +24,6 @@
         padding:15px 60px
     }
     .logoimg{
-        /* Logo image styling --change it later--*/
         display: flex;
         align-items: center;
         width: auto;
@@ -39,7 +40,6 @@
         text-shadow: #1F1F1F 2px 2px 4px;
       
         font-family: 'Libre Baskerville', serif;
-        /* Logo styling */
         font-size: 25px;
         font-weight: bold;
     }
@@ -50,7 +50,7 @@
         align-items: center;
         list-style-type: none;
         display: flex;
-    align-items: center;
+        align-items: center;
     }
     nav ul{
         list-style-type: none;
@@ -66,9 +66,8 @@
         transition: transform 0.2s ease, opacity 0.2s ease;
     }
     nav a:hover{
-        transform: scale(1.08);
-      transform: translateY(-2px);
-      opacity: 0.8;
+        transform: scale(1.1);
+        opacity: 0.8;
     }
     main{
         flex: 1;
@@ -87,7 +86,18 @@
         margin: 0;
     }
 
-
+.breadcrumb {
+  padding: 10px 40px;
+  font-size: 14px;
+  color: #666;
+  background:#fdfdfd;
+  border-bottom: 1px solid var( --ColorD);
+}
+.breadcrumb a {
+  color: #681F42;
+  text-decoration: none;
+}
+.breadcrumb a:hover {text-decoration: underline;}
 
 
 
