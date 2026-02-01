@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    <link rel="stylesheet" href="../CSS/Main.css">
+    <link rel="stylesheet" href="../CSS/Admin.css">
+</head>
+
+<body class="AdminPage">
+
+<header>
+    <div class="topnav">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo" class="logoimg"> Recipes
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- Welcome + Logout -->
+    <div class="AdminTop">
+        <span class="WelcomeAdmin">Welcome Sara!</span>
+        <a href="home.html" class="LogOutAdmin">Log-out</a>
+    </div>
+
+    <!-- Admin Information -->
+    <div class="AdminCard">
+        <h2>My Information</h2>
+        <p><strong>Name:</strong> Sara Alswailem</p>
+        <p><strong>Email address:</strong> admin@gmail.com</p>
+    </div>
+
+    <!-- Reported Recipes -->
+    <div class="AdminCard">
+        <h2>Reported Recipes</h2>
+
+        <table class="RecipeTable">
+            <tr>
+                <th>Recipe Name</th>
+                <th>Recipe Creator</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="ViewRecipe.html" class="RecipeURL">Oat Soup</a>
+                </td>
+                <td>
+                    <img src="../images/ChefAhmed.jpg" class="CreatorImg"><br>
+                    Chef Ahmed
+                </td>
+                <td>
+                    <form action="Admin.html">
+                        <input type="radio" name="action1" checked> Block User<br>
+                        <input type="radio" name="action1"> Dismiss Report<br><br>
+                        <button type="submit" class="AdminBtn">Submit</button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="" class="RecipeURL">Date Energy Balls</a>
+                </td>
+                <td>
+                    <img src="../images/ChefAhmed.jpg" class="CreatorImg"><br>
+                    Chef Ahmed
+                </td>
+                <td>
+                    <form action="Admin.html">
+                        <input type="radio" name="action2" checked> Block User<br>
+                        <input type="radio" name="action2"> Dismiss Report<br><br>
+                        <button type="submit" class="AdminBtn">Submit</button>
+                    </form>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <!-- Blocked Users -->
+    <div class="AdminCard">
+        <h2>Blocked Users List</h2>
+
+        <table class="RecipeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email Address</th>
+            </tr>
+
+            <tr>
+                <td>Haya Ahmad</td>
+                <td>haya@gmail.com</td>
+            </tr>
+
+            <tr>
+                <td>Reem Saleh</td>
+                <td>reem@gmail.com</td>
+            </tr>
+        </table>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p class="copy">© 2026 Our Name. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
