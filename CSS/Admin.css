@@ -1,0 +1,98 @@
+:root{
+    --text-color: #681F42;
+    --soft-mint:#C67154;
+    --light-cream:#fdfdfd;
+    --ROSE-VALLEY:#913C5E;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #F9F7EB;
+    background-image: url('../images/bg.png');
+    color: var(--text-color);
+}
+
+/* Main box */
+.AdminPage main{
+    margin: 90px;
+    background-color: #f9f6f1;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* Welcome + logout row */
+.AdminTop{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.WelcomeAdmin{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.LogOutAdmin{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--light-cream);
+    background-color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Cards */
+.AdminCard{
+    background-color: var(--light-cream);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+}
+
+.AdminPage h2{
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+/* Tables (same class name as user page) */
+.RecipeTable{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+.RecipeTable th{
+    background-color: var(--text-color);
+    color: var(--light-cream);
+    padding: 12px;
+}
+
+.RecipeTable td{
+    background-color: #ffffff;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Recipe links */
+.RecipeURL{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Creator image */
+.CreatorImg{
+    width: 100px;
+    border-radius: 50%;
+}
+
+/* Buttons */
+.AdminBtn{
+    border: none;
+    padding: 8px 16px;
+    background-color: var(--text-color);
+    color: var(--light-cream);
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,294 @@
+/* View Recipe page CSS (matches UserPage theme) */
+:root{
+  --text-color: #681F42;
+  --soft-mint:#C67154;
+  --cream:#ECCBB5;
+  --light-cream:#fdfdfd;
+  --argan:#0B4942;
+  --ROSE-VALLEY:#913C5E;
+  --MARRAKECH:#618C72;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background-color: #F9F7EB;
+  color: var(--text-color);
+  background-image: url('../images/bg.png');
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.ViewRecipePage main{
+  margin: 90px;
+  background-color: #f9f6f1;
+  color: var(--text-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.ViewRecipePage h1{
+  font-size: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ViewRecipePage h2{
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.ViewRecipePage h3{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ROSE-VALLEY);
+  text-align: left;
+}
+
+.MutedText{
+  opacity: 0.75;
+  font-size: 15px;
+}
+
+.Card{
+  background-color: var(--light-cream);
+  padding: 25px 30px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.Card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Top buttons */
+.TopButtons{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.TopBtn{
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--light-cream);
+  background-color: var(--text-color);
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.TopBtn:hover{
+  background-color: var(--soft-mint);
+  transform: translateY(-3px);
+}
+
+.DangerBtn{
+  background-color: var(--ROSE-VALLEY);
+}
+
+.DangerBtn:hover{
+  background-color: var(--soft-mint);
+}
+
+/* Recipe main */
+.RecipeMain{
+  text-align: center;
+}
+
+.RecipeBigImg{
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Creator */
+.CreatorRow{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.CreatorImg{
+  width: 120px;
+  height: auto;
+  border-radius: 50% !important;
+  background-color: var(--soft-mint);
+}
+
+/* Ingredients */
+.IngredientList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.IngredientList li{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  font-weight: bold;
+}
+
+.Qty{
+  color: var(--ROSE-VALLEY);
+}
+
+/* Steps */
+.StepsList li{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Comments */
+.CommentsHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.AddCommentBtn{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--light-cream);
+  background-color: var(--text-color);
+  transition: 0.3s;
+}
+
+.AddCommentBtn:hover{
+  background-color: var(--soft-mint);
+  transform: translateY(-3px);
+}
+
+.CommentBox{
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.CommentTop{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Back link */
+.BackLink{
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+.BackLink:hover{
+  color: var(--soft-mint);
+  text-decoration: underline;
+}
+
+/* Modal */
+.Modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.Hidden{
+  display: none;
+}
+
+.ModalBox{
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--light-cream);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.ModalHead{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CloseBtn{
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+textarea{
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  resize: vertical;
+}
+
+.ModalActions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.PostBtn, .CancelBtn{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.PostBtn{
+  background-color: var(--text-color);
+  color: var(--light-cream);
+}
+
+.PostBtn:hover{
+  background-color: var(--soft-mint);
+  transform: translateY(-3px);
+}
+
+.CancelBtn{
+  background-color: #ddd;
+  color: #333;
+}
+
+.CancelBtn:hover{
+  background-color: #ccc;
+}

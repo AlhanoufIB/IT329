@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Recipe - Oat Soup</title>
+
+  <link rel="stylesheet" href="../CSS/Main.css">
+  <link rel="stylesheet" href="../CSS/ViewRecipe.css">
+</head>
+
+<body class="ViewRecipePage">
+  <header>
+    <div class="topnav">
+      <div class="logo">
+        <img src="../images/logo.png" alt="Logo" class="logoimg"> Recipes
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="MyRecipes.html">My Recipes</a></li>
+          <li><a href="AddRecipe.html">Add Recipe</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ✅ Part: 3 buttons on top (NOT functional in this phase) -->
+    <div class="TopButtons">
+      <button type="button" class="TopBtn">★ Favourite</button>
+      <button type="button" class="TopBtn">♥ Like</button>
+      <button type="button" class="TopBtn DangerBtn">⚑ Report</button>
+    </div>
+
+    <!-- ✅ Part: Recipe name and photo -->
+    <div class="RecipeMain">
+      <h1 class="RecipeName">Oat Soup</h1>
+      <img src="../images/Oat-soup.jpg" alt="Oat Soup" class="RecipeBigImg">
+    </div>
+
+    <!-- ✅ Part: Creator name and photo -->
+    <div class="Card">
+      <h2>Recipe Creator</h2>
+      <div class="CreatorRow">
+        <img src="../images/ChefAhmed.jpg" alt="Creator Image" class="CreatorImg">
+        <div class="CreatorInfo">
+          <h3>Chef Ahmed</h3>
+          <p class="MutedText">Healthy Ramadan Recipes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Part: Category and description -->
+    <div class="Card">
+      <h2>Category & Description</h2>
+      <p><strong>Category:</strong> Iftar</p>
+      <p>
+        A warm and creamy oat soup that is light, filling, and perfect for Iftar.
+      </p>
+    </div>
+
+    <!-- ✅ Part: Ingredients list (name + quantity) -->
+    <div class="Card">
+      <h2>Ingredients</h2>
+      <ul class="IngredientList">
+        <li><span>Oats</span> <span class="Qty">1 cup</span></li>
+        <li><span>Water / broth</span> <span class="Qty">3 cups</span></li>
+        <li><span>Milk</span> <span class="Qty">1 cup</span></li>
+        <li><span>Onion (chopped)</span> <span class="Qty">1 small</span></li>
+        <li><span>Salt</span> <span class="Qty">1 tsp</span></li>
+        <li><span>Black pepper</span> <span class="Qty">½ tsp</span></li>
+      </ul>
+    </div>
+
+    <!-- ✅ Part: Instructions list -->
+    <div class="Card">
+      <h2>Instructions</h2>
+      <ol class="StepsList">
+        <li>Heat the broth in a pot.</li>
+        <li>Add chopped onion and cook for 2–3 minutes.</li>
+        <li>Add oats and stir well.</li>
+        <li>Add milk and simmer on low heat for 10–12 minutes.</li>
+        <li>Season with salt and pepper, then serve warm.</li>
+      </ol>
+    </div>
+
+    <!-- ✅ Part: Video (optional) -->
+    <!-- If you want a video, UNCOMMENT this section and put a real link.
+         If no video, keep it omitted (as required). -->
+    <!--
+    <div class="Card">
+      <h2>Video</h2>
+      <a class="RecipeURL" href="https://www.youtube.com/" target="_blank">Watch on YouTube</a>
+    </div>
+    -->
+
+    <!-- ✅ Part: Comments newest -> oldest + form -->
+    <div class="Card">
+      <div class="CommentsHeader">
+        <h2>Comments</h2>
+        <button type="button" id="OpenComment" class="AddCommentBtn">+ Add Comment</button>
+      </div>
+
+      <div id="CommentsList">
+        <!-- Newest first -->
+        <div class="CommentBox">
+          <div class="CommentTop">
+            <strong>Reem</strong>
+            <span class="MutedText">2 hours ago</span>
+          </div>
+          <p>This looks delicious 😍</p>
+        </div>
+
+        <div class="CommentBox">
+          <div class="CommentTop">
+            <strong>Haya</strong>
+            <span class="MutedText">Yesterday</span>
+          </div>
+          <p>I love easy recipes like this.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional back link (not required but helpful) -->
+    <a href="User.html" class="BackLink">← Back to User Page</a>
+
+  </main>
+
+  <!-- ===== Small modal (tiny box with X) ===== -->
+  <div id="CommentModal" class="Modal Hidden">
+    <div class="ModalBox">
+      <div class="ModalHead">
+        <h3>Add a Comment</h3>
+        <button type="button" id="CloseModal" class="CloseBtn">×</button>
+      </div>
+
+      <form id="CommentForm">
+        <label for="CommentText">Your comment:</label>
+        <textarea id="CommentText" rows="4" required placeholder="Write your comment..."></textarea>
+
+        <div class="ModalActions">
+          <button type="submit" class="PostBtn">Post</button>
+          <button type="button" id="CancelModal" class="CancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p class="copy">© 2026 Our Name. All rights reserved.</p>
+    </div>
+  </footer>
+<script src="../JS/ViewRecipe.js"></script>
+
+
+</body>
+</html>
