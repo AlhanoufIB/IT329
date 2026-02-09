@@ -123,6 +123,7 @@ input:focus, select:focus{
 }
 
 footer{
+ display: static;
   background: #681F42;
   color: #FFFFFF;
   text-align: center;
