@@ -20,7 +20,6 @@
 
 
 body {
-    font-family: Arial, sans-serif;
     color: var(--text-color);
     background-repeat: repeat;
     background-size: auto;
@@ -70,13 +69,13 @@ main {
 }
 
 .btn-primary {
-    background-color: var(--berkane);
+    background-color: var(--rose-valley);
     color: var(--white);
     box-shadow: 0 4px 12px rgba(198, 113, 84, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: var(--rose-valley);
+    background-color: var(--berkane);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(198, 113, 84, 0.4);
 }
@@ -121,16 +120,24 @@ main {
 
 
 .recipes-table thead {
-    background-color: var(--argan);
+    background-color: var(--souk);
     color: var(--white);
 }
 
 .recipes-table th {
     padding: 1rem;
-    text-align: left;
     font-weight: 600;
     font-size: 1rem;
-    border-bottom: 3px solid var(--berkane);
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    font-weight: bolder;
+    color: var(--light-cream);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 14px 10px;
+    position: sticky;
+    top: 1px;
+    z-index: 9;
 }
 
 .recipes-table td {
@@ -197,7 +204,7 @@ main {
 }
 
 .ingredients-list {
-    list-style-type: '🥘 ';
+    list-style-type: '𓎩 ';
 }
 
 .instructions-list {

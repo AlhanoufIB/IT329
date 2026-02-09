@@ -78,8 +78,10 @@
         background-color: #681f42;
         color: #F5EFE6;
         text-align: center;
-        padding: 10px 0;
         margin-top: auto;
+        padding: 25px;
+        font-size: 14px;
+        border-top: 1px solid #fdfdfd;
     }
     .copy{
         margin: 0;

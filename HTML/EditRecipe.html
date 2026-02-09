@@ -9,7 +9,7 @@
             @import url("../CSS/Main.css");
             @import url("../CSS/AddEdit.css");
 </style>
-        <title>rec</title>
+        <title>Ramadan's Table | Edit Recipe</title>
 
 
     </head>
@@ -42,9 +42,10 @@
 
     <label for="Category">Category:</label><br>
     <select id="Category" name="Category" required>
-        <option value="Iftar" selected >Iftar</option>
-        <option value="Snack">Snack</option>
+        <option value="" disabled selected hidden>Select a recipe</option>
+        <option value="Iftar">Iftar</option>
         <option value="Suhoor">Suhoor</option>
+        <option value="Snack">Snack</option>
     </select><br><br>
 
     <label for="Description">Description:</label><br>
@@ -52,7 +53,7 @@
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" class="RecipePhoto" name="RecipePhoto" required><br><br>
+    <input type="file" class="RecipePhoto" name="RecipePhoto" accept="image/*"  required><br><br>
 <p> <strong>Current Photo:</strong></p>
     <img src="../images/1.jpg" alt="Recipe Photo" class="CurrentRecipePhoto">
 
@@ -90,7 +91,7 @@
 
 
 <label for="VideoOrURL">Upload Video</label><br>
-<input type="file" id="VideoOrURL" name="VideoOrURL"><br><br>
+<input type="file" id="VideoOrURL" name="VideoOrURL" accept="video/*" ><br><br>
 <p> <strong>Current video:</strong></p>
 <video width="320" height="240" class="current-video" controls>
   <source src="../videos/sambosa.mp4" type="video/mp4">
@@ -105,11 +106,9 @@
         </main>
 
         <footer>
-<div class="footer-content">
-    <p class="copy">© 2026 Our Name. All rights reserved.</p>
-       </div>     
-      
-     
+            <div class="footer-content">
+                <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000 </p>
+            </div>
         </footer>
     </body>
 </html>
