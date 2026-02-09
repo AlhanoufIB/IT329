@@ -194,7 +194,7 @@ body{
 }
 
 /* Back link */
-.BackLink{
+.BackLink, .RecipeURL{
   display: inline-block;
   margin-top: 10px;
   font-size: 16px;
@@ -204,7 +204,7 @@ body{
   transition: 0.3s;
 }
 
-.BackLink:hover{
+.BackLink:hover, .RecipeURL:hover{
   color: var(--soft-mint);
   text-decoration: underline;
 }
