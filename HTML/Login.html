@@ -7,13 +7,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-
   <style>
     @import url("../CSS/Main.css");
     @import url("../CSS/style.css");
   </style>
-
-  <script src="../JS/auth.js" defer></script>
 </head>
 
 <body class="headerandfooter">
@@ -22,28 +19,31 @@
     <div class="logo"><img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table</div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
       </ul>
     </nav>
   </div>
 </header>
+
 <div class="breadcrumb">
-    <a href="index.html">Home</a> › <a href="home.html">Entry Page</a> › Log-in
-  </div>
+  <a href="index.html">Home</a> › <a href="home.html">Entry Page</a> › Log-in
+</div>
+
 <main>
   <div class="card">
     <h1>Log-in</h1>
 
-    <form id="loginForm">
+    <!-- HTML-only redirect using formaction -->
+    <form method="get">
       <label for="email">Email address</label>
       <input type="email" id="email" name="email" placeholder="name@email.com" required>
 
       <label for="pass">Password</label>
-      <input type="password" id="pass" name="password" placeholder="********">
+      <input type="password" id="pass" name="password" placeholder="********" required>
 
       <div class="btn-row">
-        <button class="btn btn-primary" type="submit">Login as User</button>
-        <button class="btn btn-secondary" id="btnAdmin" type="button">Login as Admin</button>
+        <button class="btn btn-primary" type="submit" formaction="User.html">Login as User</button>
+        <button class="btn btn-secondary" type="submit" formaction="Admin.html">Login as Admin</button>
       </div>
 
       <div class="form-links">
@@ -54,9 +54,11 @@
 </main>
 
 <footer>
-            <div class="footer-content">
-                <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000 </p>
-            </div>
-        </footer>
+  <div class="footer-content">
+    <p class="copy">© 2026 Ramadan's Table · All rights reserved <br>
+      Contact: info@RamadanTable.sa | +966 50 000 0000
+    </p>
+  </div>
+</footer>
 </body>
 </html>
