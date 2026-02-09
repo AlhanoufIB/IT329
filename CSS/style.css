@@ -1,10 +1,4 @@
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #F9F7EB;
-  color: var(--text-color);
-  background-image: url('../images/bg.png');
-}
 /* Card */
 .card{
   max-width:900px;
@@ -21,7 +15,7 @@ h1{
   margin-bottom:10px;
 }
 
-p{
+.card p{
   color:#555;
   margin-bottom:12px;
   line-height:1.6;
@@ -60,6 +54,7 @@ input:focus, select:focus{
   cursor:pointer;
   text-decoration:none;
   text-align:center;
+  margin-top:16px;
 }
 
 .btn-primary{
@@ -122,16 +117,4 @@ input:focus, select:focus{
   font-size:14px;
 }
 
-footer{
-  background: #681F42;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 12px 0;
-  margin-top: auto;
-}
-
-footer p{
-  color: #FFFFFF;
-  opacity: 1;
-}
 

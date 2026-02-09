@@ -9,7 +9,7 @@
             @import url("../CSS/Main.css");
             @import url("../CSS/AddEdit.css");
 </style>
-        <title>rec</title>
+        <title>Ramadan's Table | Add Recipe</title>
 
 
     </head>
@@ -41,11 +41,11 @@
 
 
     <label for="Category">Category:</label><br>
-    <select id="Category" name="Category" >
-        <option value="recipe1">Select a recipe</option>
-        <option value="recipe2">iftar</option>
-        <option value="recipe3">suhoor</option>
-        <option value="recipe4">snack</option>
+    <select id="Category" name="Category" required>
+        <option value="" disabled selected hidden>Select a recipe</option>
+        <option value="Iftar">Iftar</option>
+        <option value="Suhoor">Suhoor</option>
+        <option value="Snack">Snack</option>
     </select><br><br>
 
     <label for="Description">Description:</label><br>
@@ -53,7 +53,7 @@
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" id="RecipePhoto" name="RecipePhoto" required><br><br>
+    <input type="file" id="RecipePhoto" name="RecipePhoto" accept="image/*" required><br><br>
 
    <label>Ingredients:</label><br>
    <div id="Ingredients"></div><br><br>
@@ -68,7 +68,7 @@
 
 
 <label for="VideoOrURL">Upload Video</label><br>
-<input type="file" id="VideoOrURL" name="VideoOrURL"><br><br>
+<input type="file" id="VideoOrURL" name="VideoOrURL" accept="Video/*"><br><br>
 <label for="URL">or URL:</label><br>
 <input type="text" id="URL" name="URL" placeholder="https://example.com"><br><br>
 
