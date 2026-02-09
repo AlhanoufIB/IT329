@@ -43,7 +43,7 @@ function addInstruction(){
 function redirecttoRecipes(event) {
     event.preventDefault();
     alert("Recipe added successfully!");
-    window.location.href = "index.html";
+    window.location.href = "MyRecipes.html";
    
 }
 document.addEventListener("DOMContentLoaded", function () {
