@@ -1,50 +1,4 @@
-/* =====================
-   BASIC RESET
-===================== */
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', Arial, sans-serif;
-}
 
-body{
-  background-color: #F7F4EF;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* =====================
-   BREADCRUMB
-===================== */
-.breadcrumb{
-  padding: 10px 60px 0;
-  font-size: 14px;
-  color: #0B1C2D;
-}
-
-.breadcrumb a{
-  color: #0B1C2D;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.breadcrumb a:hover{
-  opacity: 0.85;
-}
-
-/* =====================
-   MAIN
-===================== */
-main{
-  flex: 1;
-  padding: 30px 60px;
-}
-
-/* =====================
-   CARD
-===================== */
 .card{
   max-width: 900px;
   margin: 30px auto;
@@ -87,16 +41,14 @@ h3{
   color: #555;
 }
 
-/* Section divider inside card */
+
 .section{
   margin-top: 18px;
   padding-top: 12px;
   border-top: 1px solid rgba(0,0,0,0.08);
 }
 
-/* =====================
-   FORMS
-===================== */
+
 label{
   display: block;
   font-weight: 700;
@@ -118,14 +70,13 @@ input:focus{
   background: #FFFFFF;
 }
 
-/* Small helper text */
+
 .hint{
   font-size: 13px;
   color: #666;
   margin-top: 6px;
 }
 
-/* Links under forms */
 .form-links{
   margin-top: 12px;
   font-size: 14px;
@@ -141,9 +92,7 @@ input:focus{
   opacity: 0.85;
 }
 
-/* =====================
-   BUTTONS
-===================== */
+
 .btn{
   display: inline-block;
   border: none;
@@ -156,7 +105,7 @@ input:focus{
   text-align: center;
 }
 
-/* Primary button */
+
 .btn-primary{
   background: #681F42;
   color: #FFFFFF;
@@ -168,7 +117,7 @@ input:focus{
   background: #913C5E;
 }
 
-/* Secondary button */
+
 .btn-secondary{
   background: #E5CBB5;
   color: #0B1C2D;
@@ -180,14 +129,14 @@ input:focus{
   background: #D9BBA4;
 }
 
-/* Full width button */
+
 .btn-block{
   width: 100%;
   display: block;
   margin-top: 16px;
 }
 
-/* Horizontal button row */
+
 .btn-row{
   display: flex;
   gap: 10px;
@@ -199,7 +148,7 @@ input:focus{
   width: 100%;
 }
 
-/* Vertical button stack (Entry page) */
+
 .btn-stack{
   display: flex;
   flex-direction: column;
@@ -207,19 +156,3 @@ input:focus{
   margin-top: 16px;
 }
 
-/* =====================
-   FOOTER
-===================== */
-footer{
-  background: #681F42;
-  color: #FFFFFF;
-  text-align: center;
-  padding: 12px 0;
-  margin-top: auto;
-}
-
-footer .copy{
-  color: #FFFFFF;
-  margin: 0;
-  opacity: 1;
-}
