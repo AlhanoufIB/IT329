@@ -37,15 +37,14 @@
     <h1>Edit Recipe</h1>
 <form action="/submit-recipe" method="post" class="AddRecipeForm" onsubmit="redirecttoRecipes(event)">
     <label for="recipeName">Recipe Name:</label><br>
-    <input type="text" id="recipeName" name="recipeName" value="sambosa"required><br><br>
+    <input type="text" id="recipeName" name="recipeName" value="Meat Samosa"required><br><br>
 
 
     <label for="Category">Category:</label><br>
     <select id="Category" name="Category" required>
-        <option value="recipe1">Select a recipe</option>
-        <option value="recipe2" selected>ftor</option>
-        <option value="recipe3">shoor</option>
-        <option value="recipe4">snack</option>
+        <option value="Iftar" selected >Iftar</option>
+        <option value="Snack">Snack</option>
+        <option value="Suhoor">Suhoor</option>
     </select><br><br>
 
     <label for="Description">Description:</label><br>
@@ -55,18 +54,26 @@
     <label for="RecipePhoto">Upload Photo:</label><br>
     <input type="file" class="RecipePhoto" name="RecipePhoto" required><br><br>
 <p> <strong>Current Photo:</strong></p>
-    <img src="../images/sambosa.png" alt="Recipe Photo" class="CurrentRecipePhoto">
+    <img src="../images/1.jpg" alt="Recipe Photo" class="CurrentRecipePhoto">
 
 
    <label>Ingredients:</label><br>
    <div id="Ingredients"><br><br>
    <div class="ingredient-row">
-        <input type="text" name="Ingredient" placeholder="Ingredient 1" value="carrot" required>
-        <input type="text" name="Quantity" placeholder="Quantity" value="2" required>
+        <input type="text" name="Ingredient" placeholder="Ingredient 1" value="Samosa dough" required>
+        <input type="text" name="Quantity" placeholder="Quantity" value="500g" required>
     </div>
     <div class="ingredient-row">    
-        <input type="text" name="Ingredient" placeholder="Ingredient 2" value="chicken" required>
-        <input type="text" name="Quantity" placeholder="Quantity" value="1" required>
+        <input type="text" name="Ingredient" placeholder="Ingredient 2" value="Ground meat" required>
+        <input type="text" name="Quantity" placeholder="Quantity" value="300g" required>
+    </div>
+    <div class="ingredient-row">    
+        <input type="text" name="Ingredient" placeholder="Ingredient 3" value="Onions" required>
+        <input type="text" name="Quantity" placeholder="Quantity" value="2 pieces" required>
+    </div>
+    <div class="ingredient-row">    
+        <input type="text" name="Ingredient" placeholder="Ingredient 4" value="Mixed spices" required>
+        <input type="text" name="Quantity" placeholder="Quantity" value="1 tsp" required>
     </div>
 </div>
     <button type="button" class="secondery" onclick="addIngredient()" >Add Ingredient</button><br><br>
@@ -75,8 +82,10 @@
 
     <label>Instructions:</label>
     <div id="Instructions">
-        <input type="text" name="Instruction" placeholder="Step 1" value="mix all togther" required><br><br>
-        <input type="text" placeholder="Step 2" value="serve hot" required><br><br>
+        <input type="text" name="Instruction" placeholder="Step 1" value="Sauté meat with onions and spices" required><br><br>
+        <input type="text" placeholder="Step 2" value="Fill dough with mixture" required><br><br>
+        <input type="text" placeholder="Step 3" value="Fold samosa into triangle shape" required><br><br>
+        <input type="text" placeholder="Step 4" value="Fry samosas until golden brown" required><br><br>
     </div><br>
 <button type="button" class="secondery" onclick="addInstruction()">Add Instruction</button><br><br>
 
@@ -89,7 +98,7 @@
   <source src="../videos/sambosa.mp4" type="video/mp4">
   Your browser does not support the video tag. </video>
 <label for="URL">or URL:</label><br>
-<input type="text" id="URL" name="URL" placeholder="https://example.com" value="https://example.com"><br><br>
+<input type="text" id="URL" name="URL" placeholder="https://www.youtube.com/watch?v=8Qc0ja_I4c0" value="https://www.youtube.com/watch?v=8Qc0ja_I4c0"><br><br>
 
 
 <button type="submit" class="submit">Update Recipe</button>
