@@ -1,26 +1,25 @@
 
+/* this is the main tool for color so that we wont have to repete it */
 :root{
-  --text-color: #681F42;
-  --soft-mint: #C67154;
-  --cream: #ECCBB5;
-  --light-cream: #fdfdfd;
+  --text-color:#681F42;
+  --soft-mint:#C67154;
+  --cream:#ECCBB5;
+  --light-cream:#fdfdfd;
 }
-
-
-body {
-  font-family: Arial, sans-serif;
+body{
+  font-family: 'Arial', sans-serif;
   background-color: #F9F7EB;
   color: var(--text-color);
   background-image: url('../images/bg.png');
 }
 
-/* ===== Main Layout ===== */
-main {
-  padding: 90px;
+
+
+main{
+  padding:90px;
 }
 
-/* ===== Main Container ===== */
-.add {
+.add{
   max-width: 1000px;
   margin: auto;
   background-color: #f9f6f1;
@@ -29,15 +28,13 @@ main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* ===== Headings ===== */
-h1 {
+h1{
   font-size: 32px;
   font-weight: bold;
   letter-spacing: 1px;
   margin-bottom: 20px;
   color: var(--text-color);
 }
-
 h1::after {
   content: "";
   display: block;
@@ -48,8 +45,8 @@ h1::after {
   border-radius: 10px;
 }
 
-/* ===== Labels ===== */
-label {
+
+label{
   display: block;
   font-weight: bold;
   margin-bottom: 6px;
@@ -57,7 +54,7 @@ label {
   color: var(--text-color);
 }
 
-/* ===== Inputs ===== */
+
 input[type="text"],
 input[type="file"],
 select,
@@ -71,12 +68,10 @@ textarea {
   color: var(--text-color);
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-
 textarea {
   resize: vertical;
   min-height: 90px;
 }
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -84,25 +79,21 @@ select:focus {
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
-/* ===== Ingredient Rows ===== */
-.ingredient-row {
+
+.ingredient-row{
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
 }
-
-.ingredient-row input {
-  flex: 1;
+.ingredient-row input{
+  flex:1;
 }
 
-/* ===== Buttons ===== */
-button {
+button{
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
-
-/* secondary button */
 .secondery {
   background-color: transparent;
   color: var(--text-color);
@@ -111,15 +102,12 @@ button {
   border-radius: 12px;
   margin-top: 8px;
 }
-
 .secondery:hover {
   background-color: var(--soft-mint);
   color: var(--light-cream);
   transform: translateY(-2px);
 }
-
-/* submit button */
-.submit {
+.submit{
   width: 100%;
   background-color: var(--text-color);
   color: var(--light-cream);
@@ -130,14 +118,11 @@ button {
   margin-top: 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-
 .submit:hover {
   background-color: var(--soft-mint);
   transform: translateY(-4px);
 }
-
-/* ===== Media ===== */
-.RecipePhoto {
+.RecipePhoto{
   width: 180px;
   height: auto;
   border-radius: 12px;
@@ -145,8 +130,7 @@ button {
   background-color: var(--light-cream);
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-
-.current-video {
+.current-video{
   width: 260px;
   border-radius: 12px;
   margin-top: 10px;
