@@ -1,30 +1,20 @@
-/* View Recipe page CSS  */
-:root{
-  --text-color: #681F42;
-  --soft-mint:#C67154;
-  --cream:#ECCBB5;
-  --light-cream:#fdfdfd;
-  --argan:#0B4942;
-  --ROSE-VALLEY:#913C5E;
-  --MARRAKECH:#618C72;
-}
+
 
 body{
   font-family: Arial, sans-serif;
-  background-color: #F9F7EB;
-  color: var(--text-color);
+  background-color: #F4EFE8;
+  color: #681F42;
   background-image: url('../images/bg.png');
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
+
 
 .ViewRecipePage main{
   margin: 90px;
   background-color: #f9f6f1;
-  color: var(--text-color);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
+
 
 .ViewRecipePage h1{
   font-size: 40px;
@@ -34,44 +24,33 @@ body{
 
 .ViewRecipePage h2{
   font-size: 30px;
-  font-weight: 600;
   margin-bottom: 15px;
-  text-transform: capitalize;
 }
 
 .ViewRecipePage h3{
   font-size: 20px;
-  font-weight: 600;
   margin-bottom: 10px;
-  color: var(--ROSE-VALLEY);
-  text-align: left;
+  color: #913C5E;
 }
 
-.MutedText{
-  opacity: 0.75;
+.Description{
+  opacity: 0.8;
   font-size: 15px;
 }
 
+
 .Card{
-  background-color: var(--light-cream);
+  background-color: #ffffff;
   padding: 25px 30px;
-  margin: 20px 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  margin: 25px 0;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
-.Card:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
 
-/* Top buttons */
 .TopButtons{
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -81,26 +60,15 @@ body{
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  color: var(--light-cream);
-  background-color: var(--text-color);
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #ffffff;
+  background-color: #681F42;
 }
 
 .TopBtn:hover{
-  background-color: var(--soft-mint);
-  transform: translateY(-3px);
+  background-color: #C67154;
 }
 
-.DangerBtn{
-  background-color: var(--ROSE-VALLEY);
-}
 
-.DangerBtn:hover{
-  background-color: var(--soft-mint);
-}
-
-/* Recipe main */
 .RecipeMain{
   text-align: center;
 }
@@ -108,13 +76,11 @@ body{
 .RecipeBigImg{
   width: 100%;
   max-width: 700px;
-  height: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Creator */
-.CreatorRow{
+
+.CreatorPart{
   display: flex;
   gap: 15px;
   align-items: center;
@@ -122,69 +88,55 @@ body{
 
 .CreatorImg{
   width: 120px;
-  height: auto;
-  border-radius: 50% !important;
-  background-color: var(--soft-mint);
+  border-radius: 50%;
+  background-color: #C67154;
 }
 
-/* Ingredients */
+
 .IngredientList{
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .IngredientList li{
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fdfdfd;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #eee;
   font-weight: bold;
 }
 
 .Qty{
-  color: var(--ROSE-VALLEY);
+  color: #913C5E;
 }
 
-/* Steps */
+
 .StepsList li{
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-/* Comments */
+
 .CommentsHeader{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
 }
 
-.AddCommentBtn{
-  border: none;
-  padding: 10px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  color: var(--light-cream);
-  background-color: var(--text-color);
-  transition: 0.3s;
-}
-
-.AddCommentBtn:hover{
-  background-color: var(--soft-mint);
-  transform: translateY(-3px);
+#CommentsList{
+  margin-top: 15px;
 }
 
 .CommentBox{
-  background-color: #fdfdfd;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 15px;
-  margin-top: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 18px;
+  margin-top: 18px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .CommentTop{
@@ -193,23 +145,37 @@ body{
   margin-bottom: 8px;
 }
 
-/* Back link */
+
+.AddCommentBtn{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #681F42;
+}
+
+.AddCommentBtn:hover{
+  background-color: #C67154;
+}
+
+
 .BackLink, .RecipeURL{
   display: inline-block;
   margin-top: 10px;
   font-size: 16px;
   text-decoration: none;
   font-weight: bold;
-  color: var(--text-color);
-  transition: 0.3s;
+  color: #681F42;
 }
 
 .BackLink:hover, .RecipeURL:hover{
-  color: var(--soft-mint);
+  color: #C67154;
   text-decoration: underline;
 }
 
-/* Modal */
+
 .Modal{
   position: fixed;
   inset: 0;
@@ -217,7 +183,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
 }
 
 .Hidden{
@@ -227,68 +192,51 @@ body{
 .ModalBox{
   width: 100%;
   max-width: 520px;
-  background-color: var(--light-cream);
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 18px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-}
-
-.ModalHead{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .CloseBtn{
   border: none;
   background: transparent;
   font-size: 28px;
-  font-weight: bold;
   cursor: pointer;
-  color: var(--text-color);
+  color: #681F42;
 }
 
 textarea{
   width: 100%;
-  border: none;
+  border: 1px solid #eee;
   border-radius: 12px;
   padding: 12px;
   margin-top: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  resize: vertical;
 }
 
 .ModalActions{
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  text-align: right;
   margin-top: 12px;
 }
 
-.PostBtn, .CancelBtn{
+.PostBtn{
   border: none;
   padding: 10px 16px;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.PostBtn{
-  background-color: var(--text-color);
-  color: var(--light-cream);
+  background-color: #681F42;
+  color: #ffffff;
 }
 
 .PostBtn:hover{
-  background-color: var(--soft-mint);
-  transform: translateY(-3px);
+  background-color: #C67154;
 }
 
 .CancelBtn{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
   background-color: #ddd;
-  color: #333;
-}
-
-.CancelBtn:hover{
-  background-color: #ccc;
 }

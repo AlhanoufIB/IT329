@@ -1,52 +1,63 @@
-// Phase 1: simple front-end comment add (newest -> oldest)
 
-const openBtn = document.getElementById("OpenComment");
-const modal = document.getElementById("CommentModal");
-const closeBtn = document.getElementById("CloseModal");
-const cancelBtn = document.getElementById("CancelModal");
-const form = document.getElementById("CommentForm");
-const text = document.getElementById("CommentText");
-const list = document.getElementById("CommentsList");
+
+let openBtn = document.getElementById("AddComment");
+let modal = document.getElementById("CommentModal");
+let closeBtn = document.getElementById("CloseModal");
+let cancelBtn = document.getElementById("CancelModal");
+let form = document.getElementById("CommentForm");
+let text = document.getElementById("CommentText");
+let list = document.getElementById("CommentsList");
 
 function openModal() {
-    modal.classList.remove("Hidden");
-    text.value = "";
-    text.focus();
+  modal.classList.remove("Hidden");
+  text.value = "";
+
 }
 
 function closeModal() {
-    modal.classList.add("Hidden");
+  modal.classList.add("Hidden");
 }
 
 openBtn.addEventListener("click", openModal);
 closeBtn.addEventListener("click", closeModal);
 cancelBtn.addEventListener("click", closeModal);
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    const value = text.value.trim();
-    if (value === "") return;
+  let value = text.value.trim(); 
+  if (value === "") return;
 
-    const box = document.createElement("div");
-    box.className = "CommentBox";
-    box.innerHTML = `
-        <div class="CommentTop">
-            <strong>You</strong>
-            <span class="MutedText">Just now</span>
-        </div>
-        <p></p>
-    `;
-    box.querySelector("p").textContent = value;
 
-    // Newest comment appears first
-    list.prepend(box);
-    closeModal();
+  let box = document.createElement("div");
+  box.className = "CommentBox"; 
+
+  let top = document.createElement("div");
+  top.className = "CommentTop";
+
+  let name = document.createElement("strong");
+  name.textContent = "You";
+
+  let time = document.createElement("span");
+  time.className = "Description"; 
+  time.textContent = "Just now";
+
+  let p = document.createElement("p");
+  p.textContent = value;
+
+  top.appendChild(name);
+  top.appendChild(time);
+
+  box.appendChild(top);
+  box.appendChild(p);
+
+
+  list.insertBefore(box, list.firstChild); 
+
+  closeModal();
 });
 
-// Close modal when clicking outside
-modal.addEventListener("click", function (e) {
-    if (e.target === modal) {
-        closeModal();
-    }
+
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) closeModal();
 });
