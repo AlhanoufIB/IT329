@@ -8,15 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    @import url("../CSS/Main.css");
-    @import url("../CSS/style.css");
+    @import url("CSS/Main.css");
+    @import url("CSS/style.css");
   </style>
 </head>
 
 <body class="headerandfooter">
 <header>
   <div class="topnav">
-    <div class="logo"><img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table</div>
+    <div class="logo"><img src="images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table</div>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -34,7 +34,7 @@
     <h1>Log-in</h1>
 
     
-    <form method="get">
+    <form  action="login_process.php" method="POST">
       <label for="email">Email address</label>
       <input type="email" id="email" name="email" placeholder="name@email.com" required>
 
