@@ -22,14 +22,14 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.php" class="active">Home</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <div class="breadcrumb">
-  <a href="index.html">Home</a> › Entry Page
+  <a href="index.php">Home</a> › Entry Page
 </div>
 
 <main>
@@ -39,12 +39,12 @@
 
   
     <div class="btn-stack">
-      <a class="btn btn-primary btn-block" href="login.html">Log-in</a>
-      <a class="btn btn-primary btn-block" href="signup.html">Sign-up</a>
+      <a class="btn btn-primary btn-block" href="login.php">Log-in</a>
+      <a class="btn btn-primary btn-block" href="signup.php">Sign-up</a>
     </div>
 
     <div class="btn-stack" style="margin-top:12px;">
-      <a class="btn btn-secondary btn-block" href="index.html">Back to About</a>
+      <a class="btn btn-secondary btn-block" href="index.php">Back to About</a>
     </div>
   </div>
 </main>

@@ -46,7 +46,7 @@
     <div class="section">
       <h2>Get Started</h2>
       <p>To explore the platform, you can log in or create a new account.</p>
-      <a href="home.html" class="btn btn-primary btn-block">Go to Entry Page</a>
+      <a href="home.php" class="btn btn-primary btn-block">Go to Entry Page</a>
     </div>
   </div>
 </main>

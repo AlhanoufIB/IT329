@@ -19,8 +19,8 @@ $instructions= $conn->query($instructions_sql);
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="JS/add.js" defer></script>
         <style>
-            @import url("CSS/Main.css");
-            @import url("CSS/AddEdit.css");
+            @import url("../CSS/Main.css");
+            @import url("../CSS/AddEdit.css");
 </style>
         <title>Ramadan's Table | Edit Recipe</title>
 

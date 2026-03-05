@@ -1,17 +1,12 @@
 /* CSS/style.css */
-*{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
 
 body{
   background:#F7F4EF;
-  min-height:100vh;
+  min-height:100vh; 
   display:flex;
   flex-direction:column;
 }
 
-header{
-  background:#0B1C2D;
-  padding:15px 60px;
-}
 
 .logoimg{ height:70px; margin-right:10px; vertical-align:middle; }
 .logo{ display:flex; align-items:center; color:#fff; font-weight:700; font-size:22px; }

@@ -31,14 +31,14 @@ $user = $result->fetch_assoc();
 
 
 if (!password_verify($password, $user['Password'])) {
-    header("Location: Login.php?error=1");
+    header("Location: Login.php?error=2");
     exit();
 }
 
 
 if (strtolower($loginType) !== strtolower($user['UserType'])) {
     // Example: user tries "Login as Admin" with a user account
-    header("Location: Login.php?error=1");
+    header("Location: Login.php?error=3");
     exit();
 }
 

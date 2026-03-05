@@ -2,10 +2,10 @@
 session_start();
 include 'db_connect.php';
 
-$userID = $_SESSION['user_id'];
+$userID = $_SESSION['UserID'];
 $recipeID = $_GET['recipeID'];
 
-$query = "DELETE FROM Favourites WHERE userID =$userID  AND recipeID = $recipeID";
+$query = "DELETE FROM Favourites WHERE UserID =$userID  AND recipeID = $recipeID";
 $result = mysqli_query($conn, $query);
 
 
