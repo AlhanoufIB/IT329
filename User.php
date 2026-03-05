@@ -4,12 +4,12 @@
 
     session_start();
     if (!isset($_SESSION['user_id'])) {
-        header("Location: Login.php?error=Please log in to access your account.");
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
         exit();
     }
 
     if($_SESSION['userType'] !== 'user') {
-        header("Location: Login.php?error=Unauthorized access. Please log in with a user account.");
+        header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-a-user-account.");
         exit();
     }
 
