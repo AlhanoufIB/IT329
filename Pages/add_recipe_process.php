@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 include 'db_connect.php';
@@ -9,7 +10,7 @@ $description = $_POST['Description'];
 $photoName = $_FILES['RecipePhoto']['name'];
 $tempName = $_FILES['RecipePhoto']['tmp_name'];
 move_uploaded_file($tempName, "../images/" . $photoName);
-$userID = 1;
+$userID = $_SESSION['UserID'];
 $sql = "INSERT INTO recipe (UserID, CategoryID, Name, description, PhotoFileName)
 VALUES ('$userID','$category','$name','$description','$photoName')";
 $conn->query($sql);

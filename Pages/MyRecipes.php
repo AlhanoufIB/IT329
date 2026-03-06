@@ -22,17 +22,17 @@
 
         <nav>
           <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="MyRecipes.html">My Recipes</a></li>
-            <li><a href="AddRecipe.html">Add Recipe</a></li>
-            <li><a href="User.html">Account</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="MyRecipes.php">My Recipes</a></li>
+            <li><a href="AddRecipe.php">Add Recipe</a></li>
+            <li><a href="User.php">Account</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <div class="breadcrumb">
-      <a href="index.html">Home</a> › <a href="User.html">User Page</a> › My Recipes
+      <a href="index.php">Home</a> › <a href="User.php">User Page</a> › My Recipes
     </div>
 
     <main>

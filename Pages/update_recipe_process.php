@@ -6,7 +6,6 @@ ini_set('display_errors',1);
 include 'db_connect.php';
 
 
-// 1️⃣ Get recipe ID
 $recipeID = $_POST['recipeID'];
 
 $name = $_POST['recipeName'];
@@ -15,7 +14,7 @@ $description = $_POST['Description'];
 $url = $_POST['URL'];
 
 
-// 2️⃣ Get current recipe info
+
 $sql = "SELECT * FROM recipe WHERE RecipeID = $recipeID";
 $result = $conn->query($sql);
 $recipe = $result->fetch_assoc();
@@ -24,17 +23,16 @@ $photoName = $recipe['PhotoFileName'];
 $videoName = $recipe['VideoPathName'];
 
 
-// 3️⃣ Check if new photo uploaded
+
 if(!empty($_FILES['RecipePhoto']['name'])){
 
 $photoName = $_FILES['RecipePhoto']['name'];
 $tempName = $_FILES['RecipePhoto']['tmp_name'];
 
-move_uploaded_file($tempName, "images/" . $photoName);
+move_uploaded_file($tempName, "../images/" . $photoName);
 }
 
 
-// 4️⃣ Check if new video uploaded
 if(!empty($_FILES['VideoOrURL']['name'])){
 
 $videoName = $_FILES['VideoOrURL']['name'];
@@ -50,7 +48,7 @@ $videoName = $url;
 }
 
 
-// 5️⃣ Update recipe
+
 $sql = "UPDATE recipe 
 SET Name='$name',
 CategoryID='$category',
@@ -62,7 +60,6 @@ WHERE RecipeID=$recipeID";
 $conn->query($sql);
 
 
-// 6️⃣ Remove old ingredients
 $conn->query("DELETE FROM ingredients WHERE RecipeID=$recipeID");
 
 
@@ -96,7 +93,6 @@ VALUES ('$recipeID','$instruction','$order')");
 }
 
 
-// 🔟 Redirect to My Recipes page
 header("Location: MyRecipes.php");
 exit();
 
