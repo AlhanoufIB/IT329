@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ramadan's Table</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    @import url("../CSS/Main.css");
-    @import url("../CSS/style.css");
-  </style>
-
-  <title>Ramadan's Table</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/Main.css">
 </head>
 
 <body class="headerandfooter">

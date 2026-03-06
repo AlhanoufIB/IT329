@@ -1,5 +1,4 @@
 <?php
-// SignUp.php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -14,10 +13,12 @@ session_start();
   <link rel="stylesheet" href="../CSS/Main.css">
 </head>
 
-<body class="headerandfooter">
+<body class="headerandfooter auth-page">
 <header>
   <div class="topnav">
-    <div class="logo"><img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table</div>
+    <div class="logo">
+      <img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table
+    </div>
     <nav>
       <ul>
         <li><a href="index.php">Home</a></li>
@@ -37,6 +38,10 @@ session_start();
 
     <?php if (isset($_GET["exists"])): ?>
       <p class="msg msg-error">This email is already registered.</p>
+    <?php elseif (isset($_GET["blocked"])): ?>
+      <p class="msg msg-error">This email is blocked.</p>
+    <?php elseif (isset($_GET["error"])): ?>
+      <p class="msg msg-error">Something went wrong. Please try again.</p>
     <?php endif; ?>
 
     <form action="signup_process.php" method="POST" enctype="multipart/form-data">

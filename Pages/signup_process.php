@@ -3,11 +3,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
-include 'db_connect.php';
+require_once 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header("Location: SignUp.php");
-  exit();
+    header("Location: SignUp.php");
+    exit();
 }
 
 $first = trim($_POST['FirstName'] ?? '');
@@ -16,46 +16,72 @@ $email = trim($_POST['Email'] ?? '');
 $pass  = $_POST['Password'] ?? '';
 
 if ($first === '' || $last === '' || $email === '' || $pass === '') {
-  header("Location: SignUp.php");
-  exit();
+    header("Location: SignUp.php?error=1");
+    exit();
 }
 
-
-$check = $conn->prepare("SELECT UserID FROM `user` WHERE Email = ? LIMIT 1");
+/* registered check */
+$check = $conn->prepare("SELECT UserID FROM user WHERE LOWER(Email) = LOWER(?) LIMIT 1");
 $check->bind_param("s", $email);
 $check->execute();
 $checkRes = $check->get_result();
 
 if ($checkRes && $checkRes->num_rows > 0) {
-  header("Location: SignUp.php?exists=1");
-  exit();
+    header("Location: SignUp.php?exists=1");
+    exit();
 }
 
-$hash = password_hash($pass, PASSWORD_BCRYPT);
+/* blocked check */
+$blocked = $conn->prepare("SELECT 1 FROM blockeduser WHERE LOWER(Email) = LOWER(?) LIMIT 1");
+$blocked->bind_param("s", $email);
+$blocked->execute();
+$blockedRes = $blocked->get_result();
+
+if ($blockedRes && $blockedRes->num_rows > 0) {
+    header("Location: SignUp.php?blocked=1");
+    exit();
+}
+
+/* image or default */
+$photoName = "default.png";
 
 if (isset($_FILES['ProfileImage']) && $_FILES['ProfileImage']['error'] === UPLOAD_ERR_OK) {
-  $tmp = $_FILES['ProfileImage']['tmp_name'];
+    $tmp = $_FILES['ProfileImage']['tmp_name'];
+    $info = getimagesize($tmp);
 
+    if ($info !== false) {
+        $ext = image_type_to_extension($info[2], false);
+        $allowed = ['jpg','jpeg','png','gif','webp'];
 
-  $info = getimagesize($tmp);
-  if ($info !== false) {
-    $ext = image_type_to_extension($info[2], false); // jpg/png/gif/webp
-    $allowed = ['jpg','jpeg','png','gif','webp'];
-
-    if (in_array(strtolower($ext), $allowed)) {
-      $newName = "profile_" . time() . "_" . rand(1000,9999) . "." . $ext;
-      move_uploaded_file($tmp, "images/" . $newName);
+        if (in_array(strtolower($ext), $allowed, true)) {
+            $newName = "profile_" . time() . "_" . rand(1000,9999) . "." . $ext;
+            if (move_uploaded_file($tmp, "../images/" . $newName)) {
+                $photoName = $newName;
+            }
+        }
     }
-  }
 }
 
-
+/* hash + insert */
+$hash = password_hash($pass, PASSWORD_BCRYPT);
 $userType = "user";
 
-$ins = $conn->prepare("INSERT INTO `user` (UserType, FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?, ?)");
-$ins->bind_param("sssss", $userType, $first, $last, $email, $hash);
-$ins->execute();
+$ins = $conn->prepare("INSERT INTO user (UserType, FirstName, LastName, Email, Password, ProfilePhoto) VALUES (?, ?, ?, ?, ?, ?)");
+$ins->bind_param("ssssss", $userType, $first, $last, $email, $hash, $photoName);
 
-/* 5) Redirect to login */
-header("Location: Login.php");
+if (!$ins->execute()) {
+    header("Location: SignUp.php?error=1");
+    exit();
+}
+
+/* session */
+$_SESSION['UserID'] = $conn->insert_id;
+$_SESSION['UserType'] = $userType;
+$_SESSION['FirstName'] = $first;
+$_SESSION['LastName'] = $last;
+$_SESSION['Email'] = $email;
+$_SESSION['ProfilePhoto'] = $photoName;
+
+/* redirect */
+header("Location: User.php");
 exit();

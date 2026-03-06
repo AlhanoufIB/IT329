@@ -7,18 +7,15 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ramadan's Table | Log-in</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/style.css">
-  <link rel="stylesheet" href="../CSS/Main.css">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/Main.css">
 </head>
 
-<body class="headerandfooter auth-page">
+<body class="headerandfooter">
+
 <header>
   <div class="topnav">
-    <div class="logo">
-      <img src="../images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table
-    </div>
+    <div class="logo"><img src="images/logo.png" alt="Logo" class="logoimg"> Ramadan's Table</div>
     <nav>
       <ul>
         <li><a href="index.php">Home</a></li>
@@ -65,5 +62,6 @@ session_start();
     <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000</p>
   </div>
 </footer>
+
 </body>
 </html>

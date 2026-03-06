@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,17 +7,14 @@
   <title>Ramadan's Table | Home</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/style.css">
-  <link rel="stylesheet" href="../CSS/Main.css">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/Main.css">
 </head>
 
 <body class="headerandfooter">
 <header>
   <div class="topnav">
-    <div class="logo">
-      <img src="../images/logo.png" alt="Logo" class="logoimg">
-      Ramadan's Table
-    </div>
+    <div class="logo"><img src="images/logo.png" alt="Logo" class="logoimg">Ramadan's Table</div>
     <nav>
       <ul>
         <li><a href="index.php" class="active">Home</a></li>
@@ -34,24 +32,20 @@
     <h1>Welcome</h1>
     <p>Choose how you want to enter the system.</p>
 
-  
-    <div class="btn-stack">
-      <a class="btn btn-primary btn-block" href="Login.php">Log-in</a>
-      <a class="btn btn-primary btn-block" href="Signup.php">Sign-up</a>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="Login.php">Log-in</a>
+      <a class="btn btn-primary" href="SignUp.php">Sign-up</a>
     </div>
 
-    <div class="btn-stack" style="margin-top:12px;">
-      <a class="btn btn-secondary btn-block" href="index.php">Back to About</a>
+    <div class="btn-row">
+      <a class="btn btn-secondary" href="index.php">Back to About</a>
     </div>
   </div>
 </main>
 
 <footer>
   <div class="footer-content">
-    <p class="copy">
-      © 2026 Ramadan's Table · All rights reserved <br>
-      Contact: info@RamadanTable.sa | +966 50 000 0000
-    </p>
+    <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000 </p>
   </div>
 </footer>
 </body>
