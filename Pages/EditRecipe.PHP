@@ -17,7 +17,7 @@ $instructions= $conn->query($instructions_sql);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="JS/add.js" defer></script>
+<script src="../JS/add.js" defer></script>
         <style>
             @import url("../CSS/Main.css");
             @import url("../CSS/AddEdit.css");
@@ -78,9 +78,9 @@ echo "<option value='{$row['CategoryID']}' $selected>{$row['CategoryName']}</opt
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" class="RecipePhoto" name="RecipePhoto" accept="image/*"  ><br><br>
+    <input type="file" class="RecipePhoto" name="RecipePhoto" accept="../images/*"  ><br><br>
 <p> <strong>Current Photo:</strong></p>
-    <img src="images/<?php echo $recipe['PhotoFileName']; ?>" alt="Recipe Photo" class="CurrentRecipePhoto">
+    <img src="../images/<?php echo $recipe['PhotoFileName']; ?>" alt="Recipe Photo" class="CurrentRecipePhoto">
 
    <label>Ingredients:</label><br>
      <div id="Ingredients">

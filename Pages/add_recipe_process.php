@@ -8,7 +8,7 @@ $category = $_POST['Category'];
 $description = $_POST['Description'];
 $photoName = $_FILES['RecipePhoto']['name'];
 $tempName = $_FILES['RecipePhoto']['tmp_name'];
-move_uploaded_file($tempName, "images/" . $photoName);
+move_uploaded_file($tempName, "../images/" . $photoName);
 $userID = 1;
 $sql = "INSERT INTO recipe (UserID, CategoryID, Name, description, PhotoFileName)
 VALUES ('$userID','$category','$name','$description','$photoName')";

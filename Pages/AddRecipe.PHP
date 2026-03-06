@@ -3,16 +3,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'db_connect.php';
 ?>
-<?php
-include 'db_connect.php';
-?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="JS/add.js" defer></script>
+<script src="../JS/add.js" defer></script>
         <style>
             @import url("../CSS/Main.css");
             @import url("../CSS/AddEdit.css");
@@ -73,7 +71,7 @@ include 'db_connect.php';
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" id="RecipePhoto" name="RecipePhoto" accept="image/*" required><br><br>
+    <input type="file" id="RecipePhoto" name="RecipePhoto" accept="../images/*" required><br><br>
 
    <label>Ingredients:</label><br>
    <div id="Ingredients"></div><br><br>
