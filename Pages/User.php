@@ -109,7 +109,7 @@
         <div class="breadcrumb">
             <a href="index.php">Home</a> › User Page
         </div>
-
+        
         <main>
             <?php echo '<span class="WelcomeUser">Welcome ' . $user['FirstName'] . '!</span>'; ?>
             
