@@ -116,7 +116,7 @@
 
             <div class="UserInfo">
                 <div id="UserPersonalInfo">
-                    <?php echo '<img src="../images/' . $user['ProfilePhoto'] . '" alt="User Image" class="UserImg">'; ?>
+                    <?php echo '<img src="../images/'. $user['ProfilePhoto'] . '" alt="User Image" class="UserImg">'; ?>
                     <h2>Your Information</h2>
                     <div class="Info">
 
