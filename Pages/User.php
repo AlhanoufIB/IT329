@@ -29,7 +29,7 @@
 
     //getting user likes count
     $query3 = "SELECT COUNT(*) as total_likes FROM Likes l
-    JOIN Recipe r ON l.RecipeID = r.UserID
+    JOIN Recipe r ON l.RecipeID = r.RecipeID
     WHERE r.UserID = $user_id";
     $result3 = mysqli_query($conn, $query3);
     $likeCount = mysqli_fetch_assoc($result3);
@@ -72,7 +72,7 @@
     }
 
 
-    $query6="SELECT r.* FROM Recipe r JOIN Favourites f ON r.RecipeID = f.recipeID WHERE f.userID = $user_id";
+    $query6="SELECT r.* FROM Recipe r JOIN Favourites f ON r.RecipeID = f.recipeID WHERE f.UserID = $user_id";
     $result6 = mysqli_query($conn, $query6);
     if ($result6) {
         $favoriteRecipes = mysqli_fetch_all($result6, MYSQLI_ASSOC);
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div id="User-MyRecipes">
-                    <h2><a href="MyRecipes.html" class="RecipeURL">Your Recipes</a></h2>
+                    <h2><a href="MyRecipes.php" class="RecipeURL">Your Recipes</a></h2>
                     <?php echo '<h3> Total Recipes: ' . $recipeCount['total_recipes'] . ' Recipes</h3>'; ?>
                     <?php echo '<h3> Total Likes: ' . $likeCount['total_likes'] . ' Likes</h3>'; ?>
                 </div>
@@ -139,17 +139,15 @@
                 <h2 style="display: inline;">All Available Recipes</h2>
                 <div class="FilterContainer">
                     <form method="POST" action="User.php">
-                        <select class="CategoryFilter" name="categoryID">
-                            <option value="AllCategories">All Categories</option>
+                        <select class="CategoryFilter" name="categoryID" onchange="this.form.submit()">
+                            <option value="">All Categories</option>
                             <?php
                                 foreach($category as $cat) {
-                                    echo '<option value="' . $cat['CategoryID'] . '"' . (isset($_POST['CategoryID']) && $_POST['CategoryID'] == $cat['CategoryID'] ? ' selected' : '') .
+                                    echo '<option value="' . $cat['CategoryID'] . '"' . (isset($_POST['categoryID']) && $_POST['categoryID'] == $cat['CategoryID'] ? ' selected' : '') .
                                     '>' . $cat['CategoryName'] . '</option>';
                                 }
-
                             ?>
                         </select>
-                        <button type="submit" class="CategoryFilter">▽ Filter</button>
                     </form>
                 </div>
 
