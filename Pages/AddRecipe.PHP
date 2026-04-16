@@ -2,6 +2,18 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'db_connect.php';
+ session_start();
+    
+    if (!isset($_SESSION['UserID'])) {
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+        exit();
+    }
+
+    if($_SESSION['UserType']  == 'admin') {
+        header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-a-user-account.");
+        exit();
+    }
+
 ?>
 
 <!DOCTYPE html>
