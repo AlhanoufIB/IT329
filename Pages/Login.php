@@ -49,9 +49,7 @@ session_start();
       <input type="password" id="pass" name="password" placeholder="********" required>
 
       <div class="btn-row">
-        <button class="btn btn-primary" type="submit" name="loginType" value="user">Login as User</button>
-        <button class="btn btn-secondary" type="submit" name="loginType" value="admin">Login as Admin</button>
-      </div>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
 
       <div class="form-links">
         New user? <a href="SignUp.php">Sign-up</a>
