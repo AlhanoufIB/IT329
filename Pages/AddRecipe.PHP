@@ -83,7 +83,7 @@ include 'db_connect.php';
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" id="RecipePhoto" name="RecipePhoto" accept="../images/*" required><br><br>
+   <input type="file" id="RecipePhoto" name="RecipePhoto" accept="image/*" required><br><br>
 
    <label>Ingredients:</label><br>
    <div id="Ingredients"></div><br><br>

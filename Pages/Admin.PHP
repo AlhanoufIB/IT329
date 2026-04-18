@@ -4,13 +4,13 @@ include("db_connect.php");
 
 /* check login */
 if (!isset($_SESSION['UserID'])) {
-    header("Location: Login.php");
+    header("Location: Login.php?error=Please-log-in-first.");
     exit();
 }
 
 /* check admin */
 if ($_SESSION['UserType'] != "admin") {
-    header("Location: Login.php");
+    header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-an-admin-account.");
     exit();
 }
 
