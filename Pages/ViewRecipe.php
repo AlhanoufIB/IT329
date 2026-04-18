@@ -116,23 +116,23 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
 
   <form action="toggle_favourite.php" method="POST">
     <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-    <button type="submit" class="TopBtn" <?php if ($isFavourite) echo "disabled"; ?>>
-      ★ Favourite
-    </button>
+<button type="submit" class="TopBtn" <?php if ($isFavourite) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+  ★ Favourite
+</button>
   </form>
 
   <form action="toggle_like.php" method="POST">
     <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-    <button type="submit" class="TopBtn" <?php if ($isLiked) echo "disabled"; ?>>
-      ♥ Like
-    </button>
+<button type="submit" class="TopBtn" <?php if ($isLiked) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+  ♥ Like
+</button>
   </form>
 
   <form action="report_recipe.php" method="POST">
     <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-    <button type="submit" class="TopBtn" <?php if ($isReported) echo "disabled"; ?>>
-      ⚑ Report
-    </button>
+<button type="submit" class="TopBtn" <?php if ($isReported) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+  ⚑ Report
+</button>
   </form>
 
 </div>
@@ -206,7 +206,11 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
   </div>
 </div>
 
-<a href="User.php" class="BackLink">← Back</a>
+<?php if ($currentUserType == "admin") { ?>
+  <a href="Admin.PHP" class="BackLink">← Back</a>
+<?php } else { ?>
+  <a href="User.php" class="BackLink">← Back</a>
+<?php } ?>
 
 </main>
 

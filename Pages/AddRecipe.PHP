@@ -2,6 +2,18 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'db_connect.php';
+ session_start();
+    
+    if (!isset($_SESSION['UserID'])) {
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+        exit();
+    }
+
+    if($_SESSION['UserType']  == 'admin') {
+        header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-a-user-account.");
+        exit();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +83,7 @@ include 'db_connect.php';
 
 
     <label for="RecipePhoto">Upload Photo:</label><br>
-    <input type="file" id="RecipePhoto" name="RecipePhoto" accept="../images/*" required><br><br>
+   <input type="file" id="RecipePhoto" name="RecipePhoto" accept="image/*" required><br><br>
 
    <label>Ingredients:</label><br>
    <div id="Ingredients"></div><br><br>

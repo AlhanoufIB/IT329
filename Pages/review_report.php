@@ -2,15 +2,14 @@
 session_start();
 include("db_connect.php");
 
-/* check login */
 if (!isset($_SESSION['UserID'])) {
-    header("Location: Login.php");
+    header("Location: Login.php?error=Please-log-in-first.");
     exit();
 }
 
 /* check admin */
 if ($_SESSION['UserType'] != "admin") {
-    header("Location: Login.php");
+    header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-an-admin-account.");
     exit();
 }
 
@@ -51,6 +50,22 @@ if ($action == "block") {
 
     while($userRecipe = mysqli_fetch_assoc($userRecipesResult)) {
         $oneRecipeID = $userRecipe['RecipeID'];
+
+        /* delete photo file */
+        if ($userRecipe['PhotoFileName'] != "") {
+            $photoPath = "../images/" . $userRecipe['PhotoFileName'];
+            if (file_exists($photoPath)) {
+                unlink($photoPath);
+            }
+        }
+
+        /* delete video file if it exists and is local */
+        if (isset($userRecipe['VideoPathName']) && $userRecipe['VideoPathName'] != "") {
+            $videoPath = "../videos/" . $userRecipe['VideoPathName'];
+            if (file_exists($videoPath)) {
+                unlink($videoPath);
+            }
+        }
 
         mysqli_query($conn, "DELETE FROM ingredients WHERE RecipeID = $oneRecipeID");
         mysqli_query($conn, "DELETE FROM instructions WHERE RecipeID = $oneRecipeID");

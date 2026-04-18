@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
-$loginType = $_POST['loginType'] ?? 'user';
 
 if ($email === '' || $password === '') {
     header("Location: Login.php?error=1");
@@ -46,11 +45,6 @@ if (!password_verify($password, $user['Password'])) {
     exit();
 }
 
-/* role check */
-if (strtolower($loginType) !== strtolower($user['UserType'])) {
-    header("Location: Login.php?error=1");
-    exit();
-}
 
 /* session */
 $_SESSION['UserID'] = (int)$user['UserID'];

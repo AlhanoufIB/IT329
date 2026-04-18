@@ -1,7 +1,22 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors',1);
+ini_set('display_errors', 1);
+
+
+
 include 'db_connect.php';
+ session_start();
+    
+    if (!isset($_SESSION['UserID'])) {
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+        exit();
+    }
+
+    if($_SESSION['UserType']  == 'admin') {
+        header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-a-user-account.");
+        exit();
+    }
+
 $recipeID = $_GET['id'];
 $sql = "SELECT * FROM recipe WHERE RecipeID = '$recipeID'";
 $result = $conn->query($sql);
@@ -9,7 +24,7 @@ $recipe = $result->fetch_assoc();
 $ingredients_sql = "SELECT * FROM ingredients WHERE RecipeID = '$recipeID'";
 $ingredients = $conn->query($ingredients_sql);
 $instructions_sql = "SELECT * FROM instructions WHERE RecipeID = '$recipeID' ORDER BY StepOrder";
-$instructions= $conn->query($instructions_sql);
+$instructions = $conn->query($instructions_sql);
 ?>
 <!DOCTYPE html>
 <html>
