@@ -145,13 +145,13 @@ require_once 'my_recipes_backend.php';
         </div>
       </div>
     </main>
-
+  </div>
         <footer>
   <div class="footer-content">
     <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000</p>
   </div>
 </footer>
-  </div>
+
 
   <script>
   function deleteRecipe(recipeId) {
