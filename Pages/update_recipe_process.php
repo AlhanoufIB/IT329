@@ -63,7 +63,7 @@ $conn->query($sql);
 $conn->query("DELETE FROM ingredients WHERE RecipeID=$recipeID");
 
 
-// 7️⃣ Insert ingredients
+
 if(isset($_POST['ingredientName'])){
 
 foreach($_POST['ingredientName'] as $i => $ingredient){
@@ -76,11 +76,11 @@ VALUES ('$recipeID','$ingredient','$quantity')");
 }
 
 
-// 8️⃣ Remove old instructions
+
 $conn->query("DELETE FROM instructions WHERE RecipeID=$recipeID");
 
 
-// 9️⃣ Insert instructions
+
 if(isset($_POST['Instruction'])){
 
 foreach($_POST['Instruction'] as $step => $instruction){
