@@ -11,7 +11,7 @@ $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 
 if ($email === '' || $password === '') {
-    header("Location: Login.php?error=1");
+    header("Location: Login.php?error=wrong-email-or-password");
     exit();
 }
 
@@ -22,7 +22,7 @@ $blockedStmt->execute();
 $blockedResult = $blockedStmt->get_result();
 
 if ($blockedResult && $blockedResult->num_rows > 0) {
-    header("Location: Login.php?blocked=1");
+    header("Location: Login.php?blocked=blocked-user");
     exit();
 }
 
@@ -33,7 +33,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if (!$result || $result->num_rows !== 1) {
-    header("Location: Login.php?error=1");
+    header("Location: Login.php?error=wrong-email-or-password");
     exit();
 }
 
@@ -41,7 +41,7 @@ $user = $result->fetch_assoc();
 
 /* verify password */
 if (!password_verify($password, $user['Password'])) {
-    header("Location: Login.php?error=1");
+    header("Location: Login.php?error=wrong-email-or-password");
     exit();
 }
 
