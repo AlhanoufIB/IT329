@@ -62,7 +62,7 @@ $instructions = $conn->query($instructions_sql);
     </div>
         </header>
         <div class="breadcrumb">
-            <a href="index.html">Home</a> › <a href="MyRecipes.html">My Recipes</a> › Edit Recipe
+            <a href="index.php">Home</a> › <a href="MyRecipes.php">My Recipes</a> › Edit Recipe
         </div>
         <main>
 

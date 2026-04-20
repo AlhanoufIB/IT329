@@ -82,7 +82,7 @@ require_once 'my_recipes_backend.php';
                       ? "../images/" . htmlspecialchars($recipe['PhotoFileName']) 
                       : "../images/default-recipe.jpg";
                     ?>
-                    <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($recipe['Name']); ?>" class="recipe-thumb" />
+                    <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name"><img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($recipe['Name']); ?>" class="recipe-thumb" /></a>
                     <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name"><?php echo htmlspecialchars($recipe['Name']); ?></a>
                   </div>
                 </td>
