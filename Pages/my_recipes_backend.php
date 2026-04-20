@@ -4,9 +4,14 @@ require_once 'db_connect.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['UserID'])) {
-    header("Location: login.php");
-    exit();
-}
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+        exit();
+    }
+
+    if($_SESSION['UserType']  == 'admin') {
+        header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-a-user-account.");
+        exit();
+    }
 
 $user_id = $_SESSION['UserID'];
 

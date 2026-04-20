@@ -16,7 +16,7 @@ $email = trim($_POST['Email'] ?? '');
 $pass  = $_POST['Password'] ?? '';
 
 if ($first === '' || $last === '' || $email === '' || $pass === '') {
-    header("Location: SignUp.php?error=1");
+    header("Location: SignUp.php?error=missing-fields");
     exit();
 }
 
@@ -27,7 +27,7 @@ $check->execute();
 $checkRes = $check->get_result();
 
 if ($checkRes && $checkRes->num_rows > 0) {
-    header("Location: SignUp.php?exists=1");
+    header("Location: SignUp.php?exists=email-already-registered");
     exit();
 }
 
@@ -38,7 +38,7 @@ $blocked->execute();
 $blockedRes = $blocked->get_result();
 
 if ($blockedRes && $blockedRes->num_rows > 0) {
-    header("Location: SignUp.php?blocked=1");
+    header("Location: SignUp.php?blocked=blocked-user");
     exit();
 }
 

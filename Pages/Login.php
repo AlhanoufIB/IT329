@@ -43,7 +43,7 @@ session_start();
     <?php if (isset($_GET["blocked"])): ?>
       <p class="msg msg-error">Your account is blocked.</p>
     <?php elseif (isset($_GET["error"])): ?>
-      <p class="msg msg-error">Wrong email or password.</p>
+      <p class="msg msg-error"><?php echo $_GET["error"]; ?></p>
     <?php endif; ?>
 
     <form action="login_process.php" method="POST">
