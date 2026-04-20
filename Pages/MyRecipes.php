@@ -130,7 +130,9 @@ require_once 'my_recipes_backend.php';
                   <a href="EditRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="btn btn-edit">Edit</a>
                 </td>
                 <td>
-                  <button class="btn btn-delete" onclick="deleteRecipe(<?php echo $recipe['RecipeID']; ?>)">Delete</button>
+                  <a href="delete_recipe.php?id=<?php echo $recipe['RecipeID']; ?>"
+                    class="btn btn-delete"
+                    onclick="return confirm('Are you sure you want to delete this recipe?')">Delete</a>
                 </td>
               </tr>
               <?php endforeach; ?>
@@ -158,31 +160,5 @@ require_once 'my_recipes_backend.php';
 </footer>
 
 
-  <script>
-  function deleteRecipe(recipeId) {
-    if (confirm('Are you sure you want to delete this recipe? This action cannot be undone.')) {
-      const formData = new FormData();
-      formData.append('recipe_id', recipeId);
-      
-      fetch('delete_recipe.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          alert('Recipe deleted successfully!');
-          location.reload();
-        } else {
-          alert('Error: ' + (data.error || 'Failed to delete recipe'));
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while deleting the recipe.');
-      });
-    }
-  }
-  </script>
 </body>
 </html>
