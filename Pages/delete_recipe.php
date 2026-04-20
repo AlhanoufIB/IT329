@@ -5,10 +5,9 @@ require_once 'db_connect.php';
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['UserID'])) {
-    http_response_code(401);
-    echo json_encode(['success' => false, 'error' => 'Unauthorized']);
-    exit();
-}
+        header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+        exit();
+    }
 
 if (!isset($_POST['recipe_id']) || !is_numeric($_POST['recipe_id'])) {
     http_response_code(400);
