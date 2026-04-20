@@ -142,7 +142,7 @@ if(!empty($recipe['VideoPathName'])){
 
 
 <video width="320" height="240" class="current-video" controls>
-  <source src="videos/<?php echo $recipe['VideoPathName']; ?>" type="video/mp4">
+  <source src="../videos/<?php echo $recipe['VideoPathName']; ?>" type="video/mp4">
   Your browser does not support the video tag. 
 </video>
 <?php
