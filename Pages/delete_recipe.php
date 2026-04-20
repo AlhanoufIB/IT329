@@ -22,20 +22,38 @@ $user_id = $_SESSION['UserID'];
 $conn->begin_transaction();
 
 try {
-    $check_query = "SELECT RecipeID, PhotoFileName FROM recipe WHERE RecipeID = ? AND UserID = ?";
-    $stmt = $conn->prepare($check_query);
-    $stmt->bind_param("ii", $recipe_id, $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 0) {
-        throw new Exception("Recipe not found or you don't have permission to delete it");
+   $check_query = "SELECT RecipeID, PhotoFileName, VideoPathName FROM recipe WHERE RecipeID = ? AND UserID = ?";
+$stmt = $conn->prepare($check_query);
+$stmt->bind_param("ii", $recipe_id, $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    throw new Exception("Recipe not found or you don't have permission to delete it");
+}
+
+$recipe = $result->fetch_assoc();
+$photo_file = $recipe['PhotoFileName'];
+$video_file = $recipe['VideoPathName'];
+$stmt->close();
+
+if (!empty($photo_file)) {
+    $photo_path = "../images/" . $photo_file;
+    if (file_exists($photo_path)) {
+        if (!unlink($photo_path)) {
+            throw new Exception("Failed to delete image file");
+        }
     }
-    
-    $recipe = $result->fetch_assoc();
-    $photo_file = $recipe['PhotoFileName'];
-    $stmt->close();
-    
+}
+
+if (!empty($video_file)) {
+    $video_path = "../videos/" . $video_file;
+    if (file_exists($video_path)) {
+        if (!unlink($video_path)) {
+            throw new Exception("Failed to delete video file");
+        }
+    }
+}
     $delete_likes = "DELETE FROM likes WHERE RecipeID = ?";
     $stmt = $conn->prepare($delete_likes);
     $stmt->bind_param("i", $recipe_id);
@@ -78,13 +96,7 @@ try {
     $stmt->execute();
     $stmt->close();
     
-    if (!empty($photo_file)) {
-        $photo_path = "../images/" . $photo_file;
-        if (file_exists($photo_path)) {
-            @unlink($photo_path);
-        }
-    }
-    
+
     $conn->commit();
     
     echo json_encode(['success' => true, 'message' => 'Recipe deleted successfully']);
