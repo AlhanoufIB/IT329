@@ -11,8 +11,16 @@ $photoName = $_FILES['RecipePhoto']['name'];
 $tempName = $_FILES['RecipePhoto']['tmp_name'];
 move_uploaded_file($tempName, "../images/" . $photoName);
 $userID = $_SESSION['UserID'];
-$sql = "INSERT INTO recipe (UserID, CategoryID, Name, description, PhotoFileName)
-VALUES ('$userID','$category','$name','$description','$photoName')";
+$videoName = NULL;
+
+if (isset($_FILES['VideoOrURL']) && $_FILES['VideoOrURL']['error'] == 0) {
+    $videoName = $_FILES['VideoOrURL']['name'];
+    $tempVideo = $_FILES['VideoOrURL']['tmp_name'];
+    move_uploaded_file($tempVideo, "../videos/" . $videoName);
+}
+
+$sql = "INSERT INTO recipe (UserID, CategoryID, Name, description, PhotoFileName, VideoPathName)
+VALUES ('$userID','$category','$name','$description','$photoName','$videoName')";
 $conn->query($sql);
 $recipeID = $conn->insert_id;
 if(isset($_POST['ingredientName'])){
@@ -33,5 +41,4 @@ if(isset($_POST['Instruction'])){
 }
 header("Location: MyRecipes.php");
 exit();
-?>
 ?>
