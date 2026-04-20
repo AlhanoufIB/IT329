@@ -38,7 +38,7 @@ if(!empty($_FILES['VideoOrURL']['name'])){
 $videoName = $_FILES['VideoOrURL']['name'];
 $tempVideo = $_FILES['VideoOrURL']['tmp_name'];
 
-move_uploaded_file($tempVideo, "videos/" . $videoName);
+move_uploaded_file($tempVideo, "../videos/" . $videoName);
 
 }
 elseif(!empty($url)){
