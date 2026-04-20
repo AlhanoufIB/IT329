@@ -133,24 +133,27 @@ while($Step= $instructions->fetch_assoc()){
 
 
 
-<label for="VideoOrURL">Upload Video</label><br>
-<input type="file" id="VideoOrURL" name="VideoOrURL" accept="video/*" ><br><br>
 <?php
-if(!empty($recipe['VideoPathName'])){
-    ?>
-<p> <strong>Current video:</strong></p>
-
-
-<video width="320" height="240" class="current-video" controls>
-  <source src="../videos/<?php echo $recipe['VideoPathName']; ?>" type="video/mp4">
-  Your browser does not support the video tag. 
-</video>
-<?php
-}
+$isURL = !empty($recipe['VideoPathName']) && str_starts_with($recipe['VideoPathName'], 'http');
+$isFile = !empty($recipe['VideoPathName']) && !$isURL;
 ?>
-<label for="URL">or URL:</label><br>
-<input type="text" id="URL" name="URL" placeholder="https://www.youtube.com/..." value="<?php echo $recipe['VideoPathName']; ?>"><br><br>
 
+<label for="VideoOrURL">Upload Video</label><br>
+<input type="file" id="VideoOrURL" name="VideoOrURL" accept="video/*"><br>
+<?php if($isFile): ?>
+    <small>Current file: <strong><?= $recipe['VideoPathName'] ?></strong></small><br>
+<?php endif; ?>
+<br>
+<?php if ($isFile): ?>
+    <p><strong>Current video:</strong></p>
+    <video width="320" height="240" class="current-video" controls>
+        <source src="../videos/<?= $recipe['VideoPathName'] ?>" type="video/mp4">
+    </video>
+<?php endif; ?>
+
+<label for="URL">or URL:</label><br>
+<input type="text" id="URL" name="URL" placeholder="https://www.youtube.com/..."
+    value="<?= $isURL ? $recipe['VideoPathName'] : '' ?>"><br><br>
 
 <button type="submit" class="submit">Update Recipe</button>
 </form>
