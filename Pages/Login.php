@@ -14,6 +14,11 @@ session_start();
 </head>
 
 <body class="headerandfooter auth-page">
+   <?php if (isset($_GET['error'])): ?>
+    <script>
+        alert("<?php echo $_GET['error']; ?>");
+    </script>
+<?php endif; ?>
 <header>
   <div class="topnav">
     <div class="logo">

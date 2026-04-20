@@ -33,6 +33,7 @@ include 'db_connect.php';
     </head>
 
     <body class="headerandfooter">
+        
         <header>
 <div class="topnav">
     <div class="logo"> <img src="../images/logo.png" alt="" class="logoimg"> Ramadan's Table</div>

@@ -15,6 +15,11 @@ require_once 'my_recipes_backend.php';
 </head>
 
 <body>
+  <?php if (isset($_GET['error'])): ?>
+    <script>
+        alert("<?php echo $_GET['error']; ?>");
+    </script>
+<?php endif; ?>
   <div class="container">
     <header>
       <div class="topnav">

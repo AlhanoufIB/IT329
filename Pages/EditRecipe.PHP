@@ -20,6 +20,10 @@ include 'db_connect.php';
 $recipeID = $_GET['id'];
 $sql = "SELECT * FROM recipe WHERE RecipeID = '$recipeID'";
 $result = $conn->query($sql);
+if (!$result || $result->num_rows === 0) {
+    header("Location: MyRecipes.php?error=Recipe not found since you didnt specify a valid recipe ID.");
+    exit();
+}
 $recipe = $result->fetch_assoc();
 $ingredients_sql = "SELECT * FROM ingredients WHERE RecipeID = '$recipeID'";
 $ingredients = $conn->query($ingredients_sql);
@@ -43,6 +47,7 @@ $instructions = $conn->query($instructions_sql);
     </head>
 
     <body class="headerandfooter">
+        
         <header>
 <div class="topnav">
     <div class="logo"> <img src="../images/logo.png" alt="" class="logoimg"> Ramadan's Table</div>
