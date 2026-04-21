@@ -2,13 +2,12 @@
 session_start();
 include("db_connect.php");
 
-/* check login */
+
 if (!isset($_SESSION['UserID'])) {
     header("Location: Login.php?error=Please-log-in-first.");
     exit();
 }
 
-/* check admin */
 if ($_SESSION['UserType'] != "admin") {
     header("Location: Login.php?error=Unauthorized-access.Please-log-in-with-an-admin-account.");
     exit();
@@ -16,12 +15,12 @@ if ($_SESSION['UserType'] != "admin") {
 
 $adminID = $_SESSION['UserID'];
 
-/* get admin info */
+
 $adminQuery = "SELECT * FROM user WHERE UserID = $adminID";
 $adminResult = mysqli_query($conn, $adminQuery);
 $admin = mysqli_fetch_assoc($adminResult);
 
-/* get reported recipes in newest report order */
+
 $reportsQuery = "
 SELECT report.ReportID, report.RecipeID, recipe.Name, recipe.UserID, user.FirstName, user.LastName, user.ProfilePhoto
 FROM report
@@ -31,7 +30,7 @@ ORDER BY report.ReportID DESC
 ";
 $reportsResult = mysqli_query($conn, $reportsQuery);
 
-/* get blocked users once only */
+
 $blockedQuery = "
 SELECT DISTINCT FirstName, LastName, Email
 FROM blockeduser

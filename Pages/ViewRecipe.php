@@ -2,18 +2,18 @@
 session_start();
 include("db_connect.php");
 
-/* check login */
+
 if (!isset($_SESSION['UserID'])) {
     header("Location: Login.php");
     exit();
 }
 
-/* get recipe id from URL */
+
 $recipeID = $_GET['id'];
 $currentUserID = $_SESSION['UserID'];
 $currentUserType = $_SESSION['UserType'];
 
-/* get recipe + creator + category */
+
 $query = "
 SELECT recipe.*, user.FirstName, user.LastName, user.ProfilePhoto, recipecategory.CategoryName
 FROM recipe
@@ -25,15 +25,14 @@ WHERE recipe.RecipeID = $recipeID
 $result = mysqli_query($conn, $query);
 $recipe = mysqli_fetch_assoc($result);
 
-/* get ingredients */
+
 $ingredientsQuery = "SELECT * FROM ingredients WHERE RecipeID = $recipeID";
 $ingredientsResult = mysqli_query($conn, $ingredientsQuery);
 
-/* get instructions */
+
 $stepsQuery = "SELECT * FROM instructions WHERE RecipeID = $recipeID ORDER BY StepOrder";
 $stepsResult = mysqli_query($conn, $stepsQuery);
 
-/* get comments */
 $commentsQuery = "
 SELECT comment.*, user.FirstName, user.LastName
 FROM comment
@@ -43,7 +42,7 @@ ORDER BY comment.date DESC
 ";
 $commentsResult = mysqli_query($conn, $commentsQuery);
 
-/* check if already favourited */
+
 $favouriteQuery = "SELECT * FROM favourites WHERE UserID = $currentUserID AND RecipeID = $recipeID";
 $favouriteResult = mysqli_query($conn, $favouriteQuery);
 $isFavourite = false;
@@ -51,7 +50,7 @@ if (mysqli_num_rows($favouriteResult) > 0) {
     $isFavourite = true;
 }
 
-/* check if already liked */
+
 $likeQuery = "SELECT * FROM likes WHERE UserID = $currentUserID AND RecipeID = $recipeID";
 $likeResult = mysqli_query($conn, $likeQuery);
 $isLiked = false;
@@ -59,7 +58,6 @@ if (mysqli_num_rows($likeResult) > 0) {
     $isLiked = true;
 }
 
-/* check if already reported */
 $reportQuery = "SELECT * FROM report WHERE UserID = $currentUserID AND RecipeID = $recipeID";
 $reportResult = mysqli_query($conn, $reportQuery);
 $isReported = false;
@@ -67,7 +65,7 @@ if (mysqli_num_rows($reportResult) > 0) {
     $isReported = true;
 }
 
-/* check if buttons should show */
+
 $showButtons = true;
 if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
     $showButtons = false;

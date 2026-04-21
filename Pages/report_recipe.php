@@ -10,7 +10,7 @@ if (!isset($_SESSION['UserID'])) {
 $recipeID = $_POST['recipe_id'];
 $userID = $_SESSION['UserID'];
 
-/* check if already reported */
+
 $checkQuery = "SELECT * FROM report WHERE UserID = $userID AND RecipeID = $recipeID";
 $checkResult = mysqli_query($conn, $checkQuery);
 
