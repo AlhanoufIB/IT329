@@ -8,10 +8,8 @@ require_once 'my_recipes_backend.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ramadan's Table | My Recipes</title>
 
-
   <link rel="stylesheet" href="../CSS/Main.css">
   <link rel="stylesheet" href="../CSS/MyRecipes.css">
-  
 </head>
 
 <body>
@@ -19,7 +17,8 @@ require_once 'my_recipes_backend.php';
     <script>
         alert("<?php echo $_GET['error']; ?>");
     </script>
-<?php endif; ?>
+  <?php endif; ?>
+
   <div class="container">
     <header>
       <div class="topnav">
@@ -46,7 +45,6 @@ require_once 'my_recipes_backend.php';
     <main>
       <div class="page-header">
         <h2>My Recipes</h2>
-      
         <a href="AddRecipe.php" class="btn btn-primary">+ Add New Recipe</a>
       </div>
 
@@ -64,9 +62,9 @@ require_once 'my_recipes_backend.php';
             </tr>
           </thead>
 
-          <tbody>
+          <tbody id="recipesBody">
             <?php if (empty($recipe_data['recipes'])): ?>
-            <tr>
+            <tr id="emptyRow">
               <td colspan="7" style="text-align: center; padding: 40px;">
                 <p>You haven't added any recipes yet.</p>
                 <a href="AddRecipe.php" class="btn btn-primary">Add Your First Recipe</a>
@@ -74,29 +72,38 @@ require_once 'my_recipes_backend.php';
             </tr>
             <?php else: ?>
               <?php foreach ($recipe_data['recipes'] as $recipe): ?>
-              <tr>
+              <tr id="recipe-<?php echo $recipe['RecipeID']; ?>">
                 <td>
                   <div class="recipe-info">
                     <?php 
                     $image_path = !empty($recipe['PhotoFileName']) 
                       ? "../images/" . htmlspecialchars($recipe['PhotoFileName']) 
-                      : "../images/default-recipe.jpg";
+                      : "../images/default.png";
                     ?>
-                    <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name"><img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($recipe['Name']); ?>" class="recipe-thumb" /></a>
-                    <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name"><?php echo htmlspecialchars($recipe['Name']); ?></a>
+                    <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name">
+                      <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($recipe['Name']); ?>" class="recipe-thumb" />
+                    </a>
+                    <a href="ViewRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="recipe-name">
+                      <?php echo htmlspecialchars($recipe['Name']); ?>
+                    </a>
                   </div>
                 </td>
+
                 <td>
                   <ul class="ingredients-list">
                     <?php if (empty($recipe['ingredients'])): ?>
                       <li>No ingredients added</li>
                     <?php else: ?>
                       <?php foreach ($recipe['ingredients'] as $ingredient): ?>
-                        <li><?php echo htmlspecialchars($ingredient['ingredientName']); ?><?php echo !empty($ingredient['ingredientQuantity']) ? ' - ' . htmlspecialchars($ingredient['ingredientQuantity']) : ''; ?></li>
+                        <li>
+                          <?php echo htmlspecialchars($ingredient['ingredientName']); ?>
+                          <?php echo !empty($ingredient['ingredientQuantity']) ? ' - ' . htmlspecialchars($ingredient['ingredientQuantity']) : ''; ?>
+                        </li>
                       <?php endforeach; ?>
                     <?php endif; ?>
                   </ul>
                 </td>
+
                 <td>
                   <ol class="instructions-list">
                     <?php if (empty($recipe['instructions'])): ?>
@@ -108,13 +115,12 @@ require_once 'my_recipes_backend.php';
                     <?php endif; ?>
                   </ol>
                 </td>
+
                 <td>
                   <?php if (!empty($recipe['VideoPathName'])): ?>
                     <?php 
-                    // Check if it's a URL or a file path
                     $videoLink = $recipe['VideoPathName'];
                     if (!filter_var($videoLink, FILTER_VALIDATE_URL)) {
-                      // It's a file, prepend the videos directory
                       $videoLink = "../videos/" . $videoLink;
                     }
                     ?>
@@ -125,14 +131,20 @@ require_once 'my_recipes_backend.php';
                     <span style="color: #999;">No video</span>
                   <?php endif; ?>
                 </td>
+
                 <td class="likes-count"><?php echo $recipe['likes_count']; ?></td>
+
                 <td>
                   <a href="EditRecipe.php?id=<?php echo $recipe['RecipeID']; ?>" class="btn btn-edit">Edit</a>
                 </td>
+
                 <td>
-                  <a href="delete_recipe.php?id=<?php echo $recipe['RecipeID']; ?>"
-                    class="btn btn-delete"
-                    onclick="return confirm('Are you sure you want to delete this recipe?')">Delete</a>
+                  <button 
+                    type="button"
+                    class="btn btn-delete delete-recipe-btn"
+                    data-id="<?php echo $recipe['RecipeID']; ?>">
+                    Delete
+                  </button>
                 </td>
               </tr>
               <?php endforeach; ?>
@@ -144,7 +156,7 @@ require_once 'my_recipes_backend.php';
       <div class="stats-summary">
         <div class="stat-card">
           <h3>Total Recipes</h3>
-          <p class="stat-number"><?php echo $recipe_data['total_recipes']; ?></p>
+          <p class="stat-number" id="totalRecipes"><?php echo $recipe_data['total_recipes']; ?></p>
         </div>
         <div class="stat-card">
           <h3>Total Likes</h3>
@@ -153,12 +165,56 @@ require_once 'my_recipes_backend.php';
       </div>
     </main>
   </div>
-        <footer>
-  <div class="footer-content">
-    <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000</p>
-  </div>
-</footer>
 
+  <footer>
+    <div class="footer-content">
+      <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000</p>
+    </div>
+  </footer>
+
+  <!-- jQuery for AJAX -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <script>
+    $(document).on("click", ".delete-recipe-btn", function () {
+      if (!confirm("Are you sure you want to delete this recipe?")) {
+        return;
+      }
+
+      var button = $(this);
+      var recipeID = button.data("id");
+
+      $.ajax({
+        url: "delete_recipe.php",
+        type: "POST",
+        data: { id: recipeID },
+        success: function (response) {
+          if (response.trim() === "true") {
+            $("#recipe-" + recipeID).remove();
+
+            var total = parseInt($("#totalRecipes").text());
+            $("#totalRecipes").text(total - 1);
+
+            if ($("#recipesBody tr").length === 0) {
+              $("#recipesBody").html(`
+                <tr id="emptyRow">
+                  <td colspan="7" style="text-align: center; padding: 40px;">
+                    <p>You haven't added any recipes yet.</p>
+                    <a href="AddRecipe.php" class="btn btn-primary">Add Your First Recipe</a>
+                  </td>
+                </tr>
+              `);
+            }
+          } else {
+            alert("Delete failed.");
+          }
+        },
+        error: function () {
+          alert("AJAX error. Please try again.");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -6,46 +6,91 @@ session_start();
 include 'db_connect.php';
 
 if (!isset($_SESSION['UserID'])) {
-    header("Location: Login.php?error=Please-log-in-to-access-your-account.");
+    echo "false";
     exit();
 }
 
-if (!isset($_GET['id'])) {
-    header("Location: MyRecipes.php");
+if (!isset($_POST['id'])) {
+    echo "false";
     exit();
 }
 
-$recipeID = $_GET['id'];
+$recipeID = intval($_POST['id']);
+$userID = intval($_SESSION['UserID']);
 
-// Fetch recipe to get file names before deleting
-$result = $conn->query("SELECT * FROM recipe WHERE RecipeID = $recipeID");
+/* Get recipe data first, and make sure this recipe belongs to the logged-in user */
+$stmt = $conn->prepare("SELECT * FROM recipe WHERE RecipeID = ? AND UserID = ?");
+$stmt->bind_param("ii", $recipeID, $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+
 if (!$result || $result->num_rows === 0) {
-    header("Location: MyRecipes.php");
+    echo "false";
     exit();
 }
+
 $recipe = $result->fetch_assoc();
+$stmt->close();
 
-// Delete all associated data
-$conn->query("DELETE FROM ingredients WHERE RecipeID = $recipeID");
-$conn->query("DELETE FROM instructions WHERE RecipeID = $recipeID");
-$conn->query("DELETE FROM comment WHERE RecipeID = $recipeID");
-$conn->query("DELETE FROM likes WHERE RecipeID = $recipeID");
-$conn->query("DELETE FROM favourites WHERE RecipeID = $recipeID");
-$conn->query("DELETE FROM report WHERE RecipeID = $recipeID");
+/* Delete associated data */
+$stmt = $conn->prepare("DELETE FROM ingredients WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
 
-// Delete the recipe itself
-$conn->query("DELETE FROM recipe WHERE RecipeID = $recipeID");
+$stmt = $conn->prepare("DELETE FROM instructions WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
 
-// Delete photo from server
-if (!empty($recipe['PhotoFileName'])) {
-    unlink('../images/' . $recipe['PhotoFileName']);
+$stmt = $conn->prepare("DELETE FROM comment WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
+
+$stmt = $conn->prepare("DELETE FROM likes WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
+
+$stmt = $conn->prepare("DELETE FROM favourites WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
+
+$stmt = $conn->prepare("DELETE FROM report WHERE RecipeID = ?");
+$stmt->bind_param("i", $recipeID);
+$stmt->execute();
+$stmt->close();
+
+/* Delete the recipe itself */
+$stmt = $conn->prepare("DELETE FROM recipe WHERE RecipeID = ? AND UserID = ?");
+$stmt->bind_param("ii", $recipeID, $userID);
+$deleted = $stmt->execute();
+$stmt->close();
+
+/* Delete image file */
+if ($deleted && !empty($recipe['PhotoFileName'])) {
+    $photoPath = '../images/' . $recipe['PhotoFileName'];
+    if (file_exists($photoPath)) {
+        unlink($photoPath);
+    }
 }
 
-// Delete video from server (only if it's a file, not a URL)
-if (!empty($recipe['VideoPathName']) && !str_starts_with($recipe['VideoPathName'], 'http')) {
-    unlink('../videos/' . $recipe['VideoPathName']);
+/* Delete video file if it is not a URL */
+if ($deleted && !empty($recipe['VideoPathName']) && !filter_var($recipe['VideoPathName'], FILTER_VALIDATE_URL)) {
+    $videoPath = '../videos/' . $recipe['VideoPathName'];
+    if (file_exists($videoPath)) {
+        unlink($videoPath);
+    }
 }
 
-header("Location: MyRecipes.php");
+if ($deleted) {
+    echo "true";
+} else {
+    echo "false";
+}
+
+$conn->close();
 exit();
 ?>
