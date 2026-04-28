@@ -90,6 +90,7 @@
         <title>Ramadan's Table | Account </title>
         <link rel="stylesheet" href="../CSS/Main.css">
         <link rel="stylesheet" href="../CSS/UserPage.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body class="UserPage">
         <header>
@@ -138,17 +139,12 @@
                 
                 <h2 style="display: inline;">All Available Recipes</h2>
                 <div class="FilterContainer">
-                    <form method="POST" action="User.php">
-                        <select class="CategoryFilter" name="categoryID" onchange="this.form.submit()">
-                            <option value="">All Categories</option>
-                            <?php
-                                foreach($category as $cat) {
-                                    echo '<option value="' . $cat['CategoryID'] . '"' . (isset($_POST['categoryID']) && $_POST['categoryID'] == $cat['CategoryID'] ? ' selected' : '') .
-                                    '>' . $cat['CategoryName'] . '</option>';
-                                }
-                            ?>
-                        </select>
-                    </form>
+                    <select class="CategoryFilter" id="categoryFilter">
+                        <option value="0">All Categories</option>
+                        <?php foreach($category as $cat): ?>
+                            <option value="<?= $cat['CategoryID'] ?>"><?= $cat['CategoryName'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
                 
@@ -160,6 +156,7 @@
                         <th>Number of likes</th>
                         <th>Category</th>
                     </tr>
+                    <tbody id="recipesBody">
                     <?php if(empty($recipes)) {
                     echo '<tr><td colspan="5">No recipes found.</td></tr>';
                     }
@@ -175,6 +172,7 @@
                                 echo '</tr>';
                             }
                     } ?>
+                    </tbody>
                 </table>
             </div>
 
@@ -194,9 +192,9 @@
                     else {
                             foreach($favoriteRecipes as $fav) {
                                 echo "<tr>";
-                                echo'<td><a href="ViewRecipe.php?id='.$fav['RecipeID']. '" class="RecipeURL">'.$fav['Name'].'</a></td>';
+                                echo'<td><a href="ViewRecipe.php?id='.$fav['RecipeID'].'" class="RecipeURL">'.$fav['Name'].'</a></td>';
                                 echo'<td><img src="../images/'.$fav['PhotoFileName'].'" alt="Recipe Photo" class="RecipeImg"></td>';
-                                echo'<td><a href="remove_favorite.php?recipeID='.$fav['RecipeID'].'" class="HeartIcon">♥</a></td>';
+                                echo '<td><a href="#" class="HeartIcon remove-fav" data-id="'.$fav['RecipeID'].'">♥</a></td>';
                                 echo"</tr>";
                             }
                     }
@@ -211,5 +209,46 @@
                 <p class="copy">© 2026 Ramadan's Table · All rights reserved <br> Contact: info@RamadanTable.sa | +966 50 000 0000 </p>
             </div>
         </footer>
+        <script>
+        
+        $(document).ready(function() {
+            $('#categoryFilter').change(function() {
+                var categoryID = $(this).val();
+                $.get('get_recipes_by_category.php', { categoryID: categoryID }, function(data) {
+                    var recipes = JSON.parse(data);
+                    var tbody = $('#recipesBody');
+                    tbody.empty();
+                    if (recipes.length === 0) {
+                        tbody.append('<tr><td colspan="5">No recipes found.</td></tr>');
+                    } else {
+                        recipes.forEach(function(recipe) {
+                            tbody.append(`
+                                <tr>
+                                    <td><a href="ViewRecipe.php?id=${recipe.RecipeID}" class="RecipeURL">${recipe.Name}</a></td>
+                                    <td><img src="../images/${recipe.PhotoFileName}" class="RecipeImg"></td>
+                                    <td><img src="../images/${recipe.userPhoto}" class="CreatorImg"><br>${recipe.FirstName} ${recipe.LastName}</td>
+                                    <td>${recipe.likeCount}</td>
+                                    <td>${recipe.CategoryName}</td>
+                                </tr>
+                            `);
+                        });
+                    }
+                });
+            });
+            $(document).on('click', '.remove-fav', function(e) {
+                e.preventDefault();
+                var recipeID = $(this).data('id');
+                var row = $(this).closest('tr');
+
+                $.get('remove_favourite.php', { recipeID: recipeID }, function(data) {
+                    if (data.trim() === 'true') {
+                        row.remove();
+                    }
+                });
+            });
+        });
+
+
+    </script>
     </body>
 </html>
