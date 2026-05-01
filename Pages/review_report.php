@@ -80,10 +80,12 @@ if ($action == "block") {
 }
 
 
-if ($action == "dismiss") {
-    mysqli_query($conn, "DELETE FROM report WHERE ReportID = $reportID");
+if ($action == "block") {
+    echo "true|" . $user['Email'];
+} else {
+    echo "true";
 }
 
-header("Location: Admin.PHP");
+$conn->close();
 exit();
 ?>
