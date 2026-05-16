@@ -19,6 +19,5 @@ if (mysqli_num_rows($checkResult) == 0) {
     mysqli_query($conn, $query);
 }
 
-header("Location: ViewRecipe.php?id=$recipeID");
-exit();
+echo "true";
 ?>
