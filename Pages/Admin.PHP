@@ -48,56 +48,7 @@ $blockedResult = mysqli_query($conn, $blockedQuery);
     <link rel="stylesheet" href="../CSS/Main.css">
     <link rel="stylesheet" href="../CSS/Admin.css">
 </head>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<script>
-$(document).on("submit", ".review-form", function(e) {
-
-    e.preventDefault();
- 
-    var form = $(this);
-    var row = form.closest("tr");
-    var reportID = form.find('input[name="report_id"]').val();
-
-    $.ajax({
-        url: "review_report.php",
-        type: "POST",
-        data: form.serialize(),
-
-        success: function(response) {
-
-            if (response.trim() !== "false") {
-
-                var selectedAction = form.find('input[name="action"]:checked').val();
-
-                if (selectedAction === "block") {
-
-                    var creatorName = row.find("td:eq(1)").text().trim();
-
-                    var email = response.split("|")[1];
-
-                    $(".BlockedTable").append(`
-                        <tr>
-                            <td>${creatorName}</td>
-                            <td>${email}</td>
-                        </tr>
-                    `);
-                }
-
-                $("#report-" + reportID).remove();
-
-            } else {
-                alert("Action failed.");
-            }
-        },
-
-        error: function() {
-            alert("AJAX error.");
-        }
-    });
-
-});
-</script>
 <body class="AdminPage">
 
 <header>
@@ -134,14 +85,14 @@ $(document).on("submit", ".review-form", function(e) {
 
         <?php if (mysqli_num_rows($reportsResult) > 0) { ?>
         <table class="RecipeTable">
-           <tr >
+            <tr>
                 <th>Recipe Name</th>
                 <th>Recipe Creator</th>
                 <th>Action</th>
             </tr>
 
-          <?php while($row = mysqli_fetch_assoc($reportsResult)) { ?>
-<tr id="report-<?php echo $row['ReportID']; ?>">
+            <?php while($row = mysqli_fetch_assoc($reportsResult)) { ?>
+            <tr id="report-<?php echo $row['ReportID']; ?>">
                 <td>
                     <a href="ViewRecipe.php?id=<?php echo $row['RecipeID']; ?>" class="RecipeURL">
                         <?php echo $row['Name']; ?>
@@ -152,16 +103,15 @@ $(document).on("submit", ".review-form", function(e) {
                     <?php echo $row['FirstName'] . " " . $row['LastName']; ?>
                 </td>
                 <td>
-                    <form class="review-form">
+                    <input type="radio" name="action-<?php echo $row['ReportID']; ?>" value="block" checked> Block User<br>
+                    <input type="radio" name="action-<?php echo $row['ReportID']; ?>" value="dismiss"> Dismiss Report<br><br>
 
-    <input type="hidden" name="recipe_id" value="<?php echo $row['RecipeID']; ?>">
-    <input type="hidden" name="report_id" value="<?php echo $row['ReportID']; ?>">
-
-    <input type="radio" name="action" value="block" checked> Block User<br>
-    <input type="radio" name="action" value="dismiss"> Dismiss Report<br><br>
-
-    <button type="submit" class="AdminBtn">Submit</button>
-</form>
+                    <button type="button" class="AdminBtn SubmitBtn"
+                        data-recipe-id="<?php echo $row['RecipeID']; ?>"
+                        data-report-id="<?php echo $row['ReportID']; ?>"
+                        data-creator="<?php echo $row['FirstName'] . ' ' . $row['LastName']; ?>">
+                        Submit
+                    </button>
                 </td>
             </tr>
             <?php } ?>
@@ -204,5 +154,54 @@ $(document).on("submit", ".review-form", function(e) {
     </div>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function () {
+
+    $(".SubmitBtn").click(function () {
+
+        var recipeID  = $(this).data("recipe-id");
+        var reportID  = $(this).data("report-id");
+        var creatorName = $(this).data("creator");
+        var action    = $('input[name="action-' + reportID + '"]:checked').val();
+
+        $.ajax({
+            url: "review_report.php",
+            type: "POST",
+            data: {
+                recipe_id: recipeID,
+                report_id: reportID,
+                action: action
+            },
+
+            success: function (response) {
+                if (response.trim() !== "false") {
+
+                    if (action === "block") {
+                        var email = response.split("|")[1];
+
+                        $(".BlockedTable").append(`
+                            <tr>
+                                <td>${creatorName}</td>
+                                <td>${email}</td>
+                            </tr>
+                        `);
+                    }
+
+                    $("#report-" + reportID).remove();
+
+                } else {
+                    alert("Action failed.");
+                }
+            },
+
+            error: function () {
+                alert("AJAX error.");
+            }
+        });
+    });
+
+});
+</script>
 </body>
 </html>
