@@ -19,8 +19,7 @@ SELECT recipe.*, user.FirstName, user.LastName, user.ProfilePhoto, recipecategor
 FROM recipe
 JOIN user ON recipe.UserID = user.UserID
 JOIN recipecategory ON recipe.CategoryID = recipecategory.CategoryID
-WHERE recipe.RecipeID = $recipeID
-";
+WHERE recipe.RecipeID = $recipeID";
 
 $result = mysqli_query($conn, $query);
 $recipe = mysqli_fetch_assoc($result);
@@ -70,6 +69,23 @@ $showButtons = true;
 if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
     $showButtons = false;
 }
+
+
+$videoPath = $recipe['VideoPathName'];
+$isURL = false;
+$isVideo = false;
+
+if ($videoPath != "") {
+    if (str_starts_with($videoPath, "http://") || str_starts_with($videoPath, "https://")) {
+        $isURL = true;
+    } else {
+        $videoExtensions = ['mp4', 'webm', 'ogg', 'mov', 'avi'];
+        $ext = strtolower(pathinfo($videoPath, PATHINFO_EXTENSION));
+        if (in_array($ext, $videoExtensions)) {
+            $isVideo = true;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +97,113 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
 
   <link rel="stylesheet" href="../CSS/Main.css">
   <link rel="stylesheet" href="../CSS/ViewRecipe.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+    // Favourite Button
+    $("#FavouriteBtn").click(function () {
+        var recipeID = $(this).data("id");
+
+        $.ajax({
+            type: "POST",
+            url: "toggle_favourite.php",
+            data: { recipe_id: recipeID },
+            success: function (response) {
+                if (response.trim() === "true") {
+                    $("#FavouriteBtn").prop("disabled", true);
+                    $("#FavouriteBtn").css({
+                        "background-color": "#cccccc",
+                        "color": "#666666",
+                        "cursor": "not-allowed"
+                    });
+                }
+            }
+        });
+    });
+
+
+    // Like Button
+    $("#LikeBtn").click(function () {
+        var recipeID = $(this).data("id");
+
+        $.ajax({
+            type: "POST",
+            url: "toggle_like.php",
+            data: { recipe_id: recipeID },
+            success: function (response) {
+                if (response.trim() === "true") {
+                    $("#LikeBtn").prop("disabled", true);
+                    $("#LikeBtn").css({
+                        "background-color": "#cccccc",
+                        "color": "#666666",
+                        "cursor": "not-allowed"
+                    });
+                }
+            }
+        });
+    });
+
+
+    // Report Button
+    $("#ReportBtn").click(function () {
+        var recipeID = $(this).data("id");
+
+        $.ajax({
+            type: "POST",
+            url: "report_recipe.php",
+            data: { recipe_id: recipeID },
+            success: function (response) {
+                if (response.trim() === "true") {
+                    $("#ReportBtn").prop("disabled", true);
+                    $("#ReportBtn").css({
+                        "background-color": "#cccccc",
+                        "color": "#666666",
+                        "cursor": "not-allowed"
+                    });
+                }
+            }
+        });
+    });
+
+
+    // Comment Modal
+    $("#AddComment").click(function () {
+        $("#CommentModal").removeClass("Hidden");
+    });
+
+    $("#CancelModal").click(function () {
+        $("#CommentModal").addClass("Hidden");
+        $("#CommentText").val("");
+    });
+
+
+    // Post Comment
+    $("#PostComment").click(function () {
+        var comment = $("#CommentText").val().trim();
+        var recipeID = $("#CommentRecipeID").val();
+
+        if (comment === "") {
+            alert("Please write a comment before posting.");
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "add_comment.php",
+            data: { recipe_id: recipeID, comment: comment },
+            success: function (response) {
+                if (response.trim() === "true") {
+                    $("#CommentModal").addClass("Hidden");
+                    $("#CommentText").val("");
+                    location.reload();
+                }
+            }
+        });
+    });
+
+});
+  </script>
 </head>
 
 <body class="ViewRecipePage">
@@ -112,44 +235,20 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
 <?php if ($showButtons) { ?>
 <div class="TopButtons">
 
-  <form id="FavouriteForm">
+  <button type="button" id="FavouriteBtn" class="TopBtn" data-id="<?php echo $recipeID; ?>"
+    <?php if ($isFavourite) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+    ★ Favourite
+  </button>
 
-<input type="hidden" id="FavouriteRecipeID" value="<?php echo $recipeID; ?>">
+  <button type="button" id="LikeBtn" class="TopBtn" data-id="<?php echo $recipeID; ?>"
+    <?php if ($isLiked) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+    ♥ Like
+  </button>
 
-<button type="submit" id="FavouriteBtn" class="TopBtn"
-<?php if ($isFavourite) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-
-★ Favourite
-
-</button>
-
-</form>
-
-<form id="LikeForm">
-
-<input type="hidden" id="LikeRecipeID" value="<?php echo $recipeID; ?>">
-
-<button type="submit" id="LikeBtn" class="TopBtn"
-<?php if ($isLiked) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-
-♥ Like
-
-</button>
-
-</form>
-
- <form id="ReportForm">
-
-<input type="hidden" id="ReportRecipeID" value="<?php echo $recipeID; ?>">
-
-<button type="submit" id="ReportBtn" class="TopBtn"
-<?php if ($isReported) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-
-⚑ Report
-
-</button>
-
-</form>
+  <button type="button" id="ReportBtn" class="TopBtn" data-id="<?php echo $recipeID; ?>"
+    <?php if ($isReported) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+    ⚑ Report
+  </button>
 
 </div>
 <?php } ?>
@@ -196,10 +295,19 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
   </ol>
 </div>
 
-<?php if ($recipe['VideoPathName'] != "") { ?>
+<?php if ($isURL) { ?>
 <div class="Card">
   <h2>Video</h2>
-  <a class="RecipeURL" href="<?php echo $recipe['VideoPathName']; ?>" target="_blank">Watch Recipe Tutorial on YouTube</a>
+  <a class="RecipeURL" href="<?php echo $videoPath; ?>" target="_blank">Watch Recipe Tutorial on YouTube</a>
+</div>
+
+<?php } elseif ($isVideo) { ?>
+<div class="Card">
+  <h2>Video</h2>
+  <video class="RecipeVideo" controls>
+    <source src="../videos/<?php echo $videoPath; ?>" type="video/<?php echo strtolower(pathinfo($videoPath, PATHINFO_EXTENSION)); ?>">
+    Your browser does not support the video tag.
+  </video>
 </div>
 <?php } ?>
 
@@ -237,19 +345,16 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
       <button type="button" id="CancelModal" class="CancelBtn">Cancel</button>
     </div>
 
-    <form action="add_comment.php" method="POST">
-      <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-      <label for="CommentText">Your comment:</label>
-      <textarea id="CommentText" name="comment" rows="4" required></textarea>
+    <textarea id="CommentText" name="comment" rows="4" placeholder="Your comment..."></textarea>
+    <input type="hidden" id="CommentRecipeID" value="<?php echo $recipeID; ?>">
 
-      <div class="ModalActions">
-        <button type="submit" class="PostBtn">Post</button>
-      </div>
-    </form>
+    <div class="ModalActions">
+      <button type="button" id="PostComment" class="PostBtn">Post</button>
+    </div>
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="/IT329/JS/ViewRecipe.js"></script>
+
+
 </body>
 </html>
