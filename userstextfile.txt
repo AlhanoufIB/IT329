@@ -1,0 +1,15 @@
+Admin:
+Username: Khiled@gmail.com , Password:1234
+
+Normal Users:
+Username: saleh@gmail.com , Password:saleh
+Username: noura@gmail.com , Password:noura
+Username: Ahmed@gmail.com , Password:ahmed
+Username: layal@gmail.com , Password:layal
+
+
+
+Blocked Users:
+Username: Salem@gmail.com , Password:salem
+Username: Ibrahim@gmail.com , Password:ibrahim
+Username: omar@gmail.com , Password:omar

@@ -48,7 +48,56 @@ $blockedResult = mysqli_query($conn, $blockedQuery);
     <link rel="stylesheet" href="../CSS/Main.css">
     <link rel="stylesheet" href="../CSS/Admin.css">
 </head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+<script>
+$(document).on("submit", ".review-form", function(e) {
+
+    e.preventDefault();
+ 
+    var form = $(this);
+    var row = form.closest("tr");
+    var reportID = form.find('input[name="report_id"]').val();
+
+    $.ajax({
+        url: "review_report.php",
+        type: "POST",
+        data: form.serialize(),
+
+        success: function(response) {
+
+            if (response.trim() !== "false") {
+
+                var selectedAction = form.find('input[name="action"]:checked').val();
+
+                if (selectedAction === "block") {
+
+                    var creatorName = row.find("td:eq(1)").text().trim();
+
+                    var email = response.split("|")[1];
+
+                    $(".BlockedTable").append(`
+                        <tr>
+                            <td>${creatorName}</td>
+                            <td>${email}</td>
+                        </tr>
+                    `);
+                }
+
+                $("#report-" + reportID).remove();
+
+            } else {
+                alert("Action failed.");
+            }
+        },
+
+        error: function() {
+            alert("AJAX error.");
+        }
+    });
+
+});
+</script>
 <body class="AdminPage">
 
 <header>
@@ -85,14 +134,14 @@ $blockedResult = mysqli_query($conn, $blockedQuery);
 
         <?php if (mysqli_num_rows($reportsResult) > 0) { ?>
         <table class="RecipeTable">
-            <tr>
+           <tr >
                 <th>Recipe Name</th>
                 <th>Recipe Creator</th>
                 <th>Action</th>
             </tr>
 
-            <?php while($row = mysqli_fetch_assoc($reportsResult)) { ?>
-            <tr>
+          <?php while($row = mysqli_fetch_assoc($reportsResult)) { ?>
+<tr id="report-<?php echo $row['ReportID']; ?>">
                 <td>
                     <a href="ViewRecipe.php?id=<?php echo $row['RecipeID']; ?>" class="RecipeURL">
                         <?php echo $row['Name']; ?>
@@ -103,15 +152,16 @@ $blockedResult = mysqli_query($conn, $blockedQuery);
                     <?php echo $row['FirstName'] . " " . $row['LastName']; ?>
                 </td>
                 <td>
-                    <form action="review_report.php" method="POST">
-                        <input type="hidden" name="recipe_id" value="<?php echo $row['RecipeID']; ?>">
-                        <input type="hidden" name="report_id" value="<?php echo $row['ReportID']; ?>">
+                    <form class="review-form">
 
-                        <input type="radio" name="action" value="block" checked> Block User<br>
-                        <input type="radio" name="action" value="dismiss"> Dismiss Report<br><br>
+    <input type="hidden" name="recipe_id" value="<?php echo $row['RecipeID']; ?>">
+    <input type="hidden" name="report_id" value="<?php echo $row['ReportID']; ?>">
 
-                        <button type="submit" class="AdminBtn">Submit</button>
-                    </form>
+    <input type="radio" name="action" value="block" checked> Block User<br>
+    <input type="radio" name="action" value="dismiss"> Dismiss Report<br><br>
+
+    <button type="submit" class="AdminBtn">Submit</button>
+</form>
                 </td>
             </tr>
             <?php } ?>

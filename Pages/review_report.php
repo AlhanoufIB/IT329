@@ -79,11 +79,16 @@ if ($action == "block") {
     mysqli_query($conn, "DELETE FROM user WHERE UserID = $userID");
 }
 
-
 if ($action == "dismiss") {
     mysqli_query($conn, "DELETE FROM report WHERE ReportID = $reportID");
 }
 
-header("Location: Admin.PHP");
+if ($action == "block") {
+    echo "true|" . $user['Email'];
+} else {
+    echo "true";
+}
+
+$conn->close();
 exit();
 ?>

@@ -112,26 +112,44 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
 <?php if ($showButtons) { ?>
 <div class="TopButtons">
 
-  <form action="toggle_favourite.php" method="POST">
-    <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-<button type="submit" class="TopBtn" <?php if ($isFavourite) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-  ★ Favourite
-</button>
-  </form>
+  <form id="FavouriteForm">
 
-  <form action="toggle_like.php" method="POST">
-    <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-<button type="submit" class="TopBtn" <?php if ($isLiked) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-  ♥ Like
-</button>
-  </form>
+<input type="hidden" id="FavouriteRecipeID" value="<?php echo $recipeID; ?>">
 
-  <form action="report_recipe.php" method="POST">
-    <input type="hidden" name="recipe_id" value="<?php echo $recipeID; ?>">
-<button type="submit" class="TopBtn" <?php if ($isReported) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
-  ⚑ Report
+<button type="submit" id="FavouriteBtn" class="TopBtn"
+<?php if ($isFavourite) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+
+★ Favourite
+
 </button>
-  </form>
+
+</form>
+
+<form id="LikeForm">
+
+<input type="hidden" id="LikeRecipeID" value="<?php echo $recipeID; ?>">
+
+<button type="submit" id="LikeBtn" class="TopBtn"
+<?php if ($isLiked) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+
+♥ Like
+
+</button>
+
+</form>
+
+ <form id="ReportForm">
+
+<input type="hidden" id="ReportRecipeID" value="<?php echo $recipeID; ?>">
+
+<button type="submit" id="ReportBtn" class="TopBtn"
+<?php if ($isReported) echo "disabled style='background-color:#cccccc; color:#666666; cursor:not-allowed;'"; ?>>
+
+⚑ Report
+
+</button>
+
+</form>
 
 </div>
 <?php } ?>
@@ -231,6 +249,7 @@ if ($currentUserID == $recipe['UserID'] || $currentUserType == "admin") {
   </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="/IT329/JS/ViewRecipe.js"></script>
 </body>
 </html>

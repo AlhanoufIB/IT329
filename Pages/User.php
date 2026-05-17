@@ -240,7 +240,7 @@
                 var recipeID = $(this).data('id');
                 var row = $(this).closest('tr');
 
-                $.get('remove_favourite.php', { recipeID: recipeID }, function(data) {
+                $.get('remove_favouriteAjax.php', { recipeID: recipeID }, function(data) {
                     if (data.trim() === 'true') {
                         row.remove();
                     }
