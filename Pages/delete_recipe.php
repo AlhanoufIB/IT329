@@ -18,7 +18,6 @@ if (!isset($_POST['id'])) {
 $recipeID = intval($_POST['id']);
 $userID = intval($_SESSION['UserID']);
 
-/* Get recipe data first, and make sure this recipe belongs to the logged-in user */
 $stmt = $conn->prepare("SELECT * FROM recipe WHERE RecipeID = ? AND UserID = ?");
 $stmt->bind_param("ii", $recipeID, $userID);
 $stmt->execute();
@@ -32,54 +31,31 @@ if (!$result || $result->num_rows === 0) {
 $recipe = $result->fetch_assoc();
 $stmt->close();
 
-/* Delete associated data */
-$stmt = $conn->prepare("DELETE FROM ingredients WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
+$tables = ["ingredients", "instructions", "comment", "likes", "favourites", "report"];
 
-$stmt = $conn->prepare("DELETE FROM instructions WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
+foreach ($tables as $table) {
+    $stmt = $conn->prepare("DELETE FROM `$table` WHERE RecipeID = ?");
+    $stmt->bind_param("i", $recipeID);
+    $stmt->execute();
+    $stmt->close();
+}
 
-$stmt = $conn->prepare("DELETE FROM comment WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
-
-$stmt = $conn->prepare("DELETE FROM likes WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
-
-$stmt = $conn->prepare("DELETE FROM favourites WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
-
-$stmt = $conn->prepare("DELETE FROM report WHERE RecipeID = ?");
-$stmt->bind_param("i", $recipeID);
-$stmt->execute();
-$stmt->close();
-
-/* Delete the recipe itself */
 $stmt = $conn->prepare("DELETE FROM recipe WHERE RecipeID = ? AND UserID = ?");
 $stmt->bind_param("ii", $recipeID, $userID);
 $deleted = $stmt->execute();
 $stmt->close();
 
-/* Delete image file */
 if ($deleted && !empty($recipe['PhotoFileName'])) {
     $photoPath = '../images/' . $recipe['PhotoFileName'];
+
     if (file_exists($photoPath)) {
         unlink($photoPath);
     }
 }
 
-/* Delete video file if it is not a URL */
 if ($deleted && !empty($recipe['VideoPathName']) && !filter_var($recipe['VideoPathName'], FILTER_VALIDATE_URL)) {
     $videoPath = '../videos/' . $recipe['VideoPathName'];
+
     if (file_exists($videoPath)) {
         unlink($videoPath);
     }
